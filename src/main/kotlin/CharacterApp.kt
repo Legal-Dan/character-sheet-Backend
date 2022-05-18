@@ -1,5 +1,3 @@
-
-
 class CharacterApp(reader: Reader) {
     private val reader = reader
 
@@ -8,9 +6,17 @@ class CharacterApp(reader: Reader) {
         val name = reader.getNextLine()
         println("Standard characteristics or roll:")
         val statsGeneration = reader.getNextLine()
-        println("Highest value (or leave blank for random):")
-        val input = reader.getNextLine()
-        val highestValue = if (input != "") input else "none"
+        val highestValue: String
+        if (statsGeneration == "standard") {
+            println("Highest value (or leave blank for random):")
+            val input = reader.getNextLine()
+            if (input != ""){
+                highestValue = input
+            } else {
+                highestValue = "none"}
+        } else {
+            highestValue = "none"
+        }
         var character = ""
         for (characteristic in PlayableCharacter(statsGeneration, highestValue).characteristics.assignedCharacteristic){
             character += ", " + characteristic.name + ": " + characteristic.value
