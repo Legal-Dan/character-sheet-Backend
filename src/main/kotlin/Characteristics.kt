@@ -53,6 +53,7 @@ class Characteristics(statsGeneration:String, highestValue:String) {
         while ((toAssign).size != 0){
             assignedCharacteristicsWorking += createRandomCharacteristic(toAssign[0])
         }
+        assignedCharacteristicsWorking += createCharacteristic("luck", roll3d6())
         return assignedCharacteristicsWorking
 
     }
@@ -77,6 +78,7 @@ class Characteristics(statsGeneration:String, highestValue:String) {
         while ((toAssign).size != 0){
             assignedCharacteristicsWorking += createCharacteristic(toAssign[0], charValues.random())
         }
+        assignedCharacteristicsWorking += createCharacteristic("luck", roll3d6())
         return assignedCharacteristicsWorking
     }
 

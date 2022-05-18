@@ -7,9 +7,11 @@ class PlayableCharacterTest{
         val statsGeneration = "standard"
         val highestValue = "none"
         var totalValue = 0
-        for (charac in PlayableCharacter(statsGeneration, highestValue).characteristics.assignedCharacteristic) {
+        val characteristics = PlayableCharacter(statsGeneration, highestValue).characteristics.assignedCharacteristic
+        for (charac in characteristics) {
             totalValue += charac.value
         }
+        totalValue -= characteristics[8].value
         assert(totalValue.equals(70+60+60+50+50+50+40+40))
     }
 
@@ -27,9 +29,11 @@ class PlayableCharacterTest{
         val statsGeneration = "roll"
         val highestValue = "none"
         var totalValue = 0
-        for (charac in PlayableCharacter(statsGeneration, highestValue).characteristics.assignedCharacteristic) {
+        val characteristics = PlayableCharacter(statsGeneration, highestValue).characteristics.assignedCharacteristic
+        for (charac in characteristics) {
             totalValue += charac.value
         }
+        totalValue -= characteristics[8].value
         assert(!totalValue.equals(70+60+60+50+50+50+40+40))
     }
 }
