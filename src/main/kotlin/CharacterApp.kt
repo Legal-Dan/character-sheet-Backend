@@ -19,7 +19,7 @@ class CharacterApp(reader: Reader) {
         }
         var character = ""
         for (characteristic in PlayableCharacter(statsGeneration, highestValue).characteristics.assignedCharacteristic){
-            character += ", " + characteristic.name + ": " + characteristic.value
+            character += ", " + characteristic.key + ": " + characteristic.value
         }
         println("$name's stats are${character}")
     }

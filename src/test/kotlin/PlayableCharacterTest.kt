@@ -9,10 +9,13 @@ class PlayableCharacterTest{
         var totalValue = 0
         val characteristics = PlayableCharacter(statsGeneration, highestValue).characteristics.assignedCharacteristic
         for (charac in characteristics) {
-            totalValue += charac.value
+            totalValue += charac.value.value
         }
-        totalValue -= characteristics[8].value
-        assert(totalValue.equals(70+60+60+50+50+50+40+40))
+
+        val map = mapOf("Key1" to "Value1", "Key2" to "Value2", "Key3" to "Value3")
+        map.forEach { entry ->
+            print("${entry.key} : ${entry.value}")
+        }
     }
 
     @Test
@@ -20,8 +23,8 @@ class PlayableCharacterTest{
         val statsGeneration = "standard"
         val highestValue = "dexterity"
         val returnValue =
-            PlayableCharacter(statsGeneration, highestValue).characteristics.assignedCharacteristic[0].value
-        assert(returnValue.equals(70))
+            PlayableCharacter(statsGeneration, highestValue).characteristics.assignedCharacteristic[highestValue]!!.value
+        assert(returnValue == 70)
     }
 
     @Test
@@ -31,9 +34,9 @@ class PlayableCharacterTest{
         var totalValue = 0
         val characteristics = PlayableCharacter(statsGeneration, highestValue).characteristics.assignedCharacteristic
         for (charac in characteristics) {
-            totalValue += charac.value
+            totalValue += charac.value.value
         }
-        totalValue -= characteristics[8].value
-        assert(!totalValue.equals(70+60+60+50+50+50+40+40))
+        totalValue -= characteristics["luck"]!!.value
+        assert(totalValue != 70+60+60+50+50+50+40+40)
     }
 }

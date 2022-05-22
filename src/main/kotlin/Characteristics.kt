@@ -1,9 +1,9 @@
 class Characteristics(statsGeneration:String, highestValue:String) {
     val charValues = mutableListOf(70, 60, 60, 50, 50, 50, 40, 40)
     val toAssign = mutableListOf("strength", "dexterity", "intelligence", "constitution", "appearance", "power", "size", "education")
-    val assignedCharacteristic:MutableList<Characteristic> = assignCharacteristics(statsGeneration, highestValue)
+    val assignedCharacteristic:MutableMap<String, Characteristic> = assignCharacteristics(statsGeneration, highestValue)
 
-    fun assignCharacteristics(statsGeneration: String, highestValue: String): MutableList<Characteristic> {
+    fun assignCharacteristics(statsGeneration: String, highestValue: String): MutableMap<String, Characteristic> {
         if (statsGeneration == "standard"){
             return assignStandardCharacteristics(highestValue)
         }
@@ -12,8 +12,8 @@ class Characteristics(statsGeneration:String, highestValue:String) {
         }
     }
 
-    fun rollStatistics(highestValue: String): MutableList<Characteristic> {
-        val assignedCharacteristicsWorking: MutableList<Characteristic>
+    fun rollStatistics(highestValue: String): MutableMap<String, Characteristic> {
+        val assignedCharacteristicsWorking: MutableMap<String, Characteristic>
         val values3d6 = mutableListOf(roll3d6(), roll3d6(), roll3d6(), roll3d6(), roll3d6())
         values3d6.sortDescending()
         val stats3d6 = mutableListOf("strength", "dexterity", "constitution", "appearance", "power")
@@ -37,23 +37,23 @@ class Characteristics(statsGeneration:String, highestValue:String) {
         }
 
         if (stats3d6.contains(highestValue)) {
-            assignedCharacteristicsWorking = mutableListOf(createCharacteristic(highestValue, values3d6[0]))
+            assignedCharacteristicsWorking = mutableMapOf(highestValue to createCharacteristic(highestValue, values3d6[0]))
             values3d6.remove(values3d6[0])
             stats3d6.remove(highestValue)
         }
         else if (stats2d6.contains(highestValue)) {
-            assignedCharacteristicsWorking = mutableListOf(createCharacteristic(highestValue, values2d6[0]))
+            assignedCharacteristicsWorking = mutableMapOf(highestValue to createCharacteristic(highestValue, values2d6[0]))
             values2d6.remove(values2d6[0])
             stats2d6.remove(highestValue)
         }
         else{
-            assignedCharacteristicsWorking = mutableListOf(createRandomCharacteristic("strength"))
+            assignedCharacteristicsWorking = mutableMapOf("strength" to createRandomCharacteristic("strength"))
         }
 
         while ((toAssign).size != 0){
-            assignedCharacteristicsWorking += createRandomCharacteristic(toAssign[0])
+            assignedCharacteristicsWorking += toAssign[0] to createRandomCharacteristic(toAssign[0])
         }
-        assignedCharacteristicsWorking += createCharacteristic("luck", roll3d6())
+        assignedCharacteristicsWorking += "luck" to createCharacteristic("luck", roll3d6())
         return assignedCharacteristicsWorking
 
     }
@@ -66,19 +66,19 @@ class Characteristics(statsGeneration:String, highestValue:String) {
         return ((1..6).random() + (1..6).random() + 6)*5
     }
 
-    fun assignStandardCharacteristics(highestValue: String): MutableList<Characteristic> {
-        val assignedCharacteristicsWorking: MutableList<Characteristic>
+    fun assignStandardCharacteristics(highestValue: String): MutableMap<String, Characteristic> {
+        val assignedCharacteristicsWorking: MutableMap<String, Characteristic>
         if (highestValue != "none") {
-            assignedCharacteristicsWorking = mutableListOf(createCharacteristic(highestValue, 70))
+            assignedCharacteristicsWorking = mutableMapOf(highestValue to createCharacteristic(highestValue, 70))
         }
         else{
-            assignedCharacteristicsWorking = mutableListOf(createCharacteristic("strength", charValues.random()))
+            assignedCharacteristicsWorking = mutableMapOf("strength" to createCharacteristic("strength", charValues.random()))
         }
 
         while ((toAssign).size != 0){
-            assignedCharacteristicsWorking += createCharacteristic(toAssign[0], charValues.random())
+            assignedCharacteristicsWorking += toAssign[0] to createCharacteristic(toAssign[0], charValues.random())
         }
-        assignedCharacteristicsWorking += createCharacteristic("luck", roll3d6())
+        assignedCharacteristicsWorking += "luck" to createCharacteristic("luck", roll3d6())
         return assignedCharacteristicsWorking
     }
 
@@ -88,9 +88,9 @@ class Characteristics(statsGeneration:String, highestValue:String) {
         return  Characteristic(name, value)
     }
 
-    fun updateCharacteristic(characteristic:Characteristic, newValue:Int):MutableList<Characteristic>{
-        assignedCharacteristic.remove(characteristic)
-        assignedCharacteristic += createCharacteristic(characteristic.name, newValue)
+    fun updateCharacteristic(characteristic:Characteristic, newValue:Int):MutableMap<String, Characteristic>{
+        assignedCharacteristic.remove(characteristic.name)
+        assignedCharacteristic += characteristic.name to createCharacteristic(characteristic.name, newValue)
         return assignedCharacteristic
     }
 }
