@@ -33,7 +33,8 @@ class MessageResource(val service: MessageService)  {
         return sampleList;
     }
 
-    @PostMapping
+    @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
+    @PostMapping("/getUsers")
     fun post(@RequestBody message: String) {
         println(message)
     }
