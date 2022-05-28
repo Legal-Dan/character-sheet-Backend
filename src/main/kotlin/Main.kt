@@ -1,7 +1,6 @@
 package main
 
 import PlayableCharacter
-import Skills
 import com.beust.klaxon.Klaxon
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -39,12 +38,14 @@ class MessageResource(val service: MessageService)  {
     @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
     @PostMapping("/getUsers")
     fun post(@RequestBody message: String): String {
-        data class Character(val charName: String, val occupation: String, val age: String, val statsGeneration: String, val highestValue:String)
+        data class Character(val charName: String, val era: String, val occupation: String, val age: String, val statsGeneration: String, val highestValue:String)
 
         val result = Klaxon()
             .parse<Character>(message)
         if (result != null) {
-            val generatedCharacter = PlayableCharacter(result.charName, result.occupation, result.age.toInt(), result.statsGeneration, result.highestValue)
+            val generatedCharacter = PlayableCharacter(result.charName, result.era, result.occupation, result.age.toInt(), result.statsGeneration, result.highestValue)
+
+            generatedCharacter.characterSkills
             generatedCharacter.characterSkills["dodge"]!!.value = generatedCharacter.characteristics.assignedCharacteristic["dexterity"]!!.value/2
             generatedCharacter.characterSkills["languageOwn"]!!.displayName = "Language: English"
             generatedCharacter.characterSkills["languageOwn"]!!.value = generatedCharacter.characteristics.assignedCharacteristic["education"]!!.value
