@@ -1,6 +1,7 @@
 package main
 
 import PlayableCharacter
+import Skills
 import com.beust.klaxon.Klaxon
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -44,15 +45,25 @@ class MessageResource(val service: MessageService)  {
             .parse<Character>(message)
         if (result != null) {
             val generatedCharacter = PlayableCharacter(result.charName, result.occupation, result.age.toInt(), result.statsGeneration, result.highestValue)
+            generatedCharacter.characterSkills["dodge"]!!.value = generatedCharacter.characteristics.assignedCharacteristic["dexterity"]!!.value/2
+            generatedCharacter.characterSkills["languageOwn"]!!.displayName = "Language: English"
+            generatedCharacter.characterSkills["languageOwn"]!!.value = generatedCharacter.characteristics.assignedCharacteristic["education"]!!.value
+
             val returnName = generatedCharacter.name
             val returnAge = generatedCharacter.age
             val returnOccupation = generatedCharacter.occupation
             val flatStats = generatedCharacter.characteristics.assignedCharacteristic
             var returnStats = ""
+            var returnSkills = ""
             for (stat in flatStats){
                 returnStats += ", " + stat.value.name + ": " + stat.value.value
             }
-            val toReturn = "$returnName is a $returnAge year old $returnOccupation with base characteristics of$returnStats"
+
+            for (skill in generatedCharacter.characterSkills){
+                returnSkills += ", " + skill.value.displayName + ": " + skill.value.value
+            }
+
+            val toReturn = "$returnName is a $returnAge year old $returnOccupation with base characteristics of$returnStats. Current skills are set to$returnSkills."
 
             class ReturnString(val text: String)
             val toReturnJson = ReturnString(toReturn)

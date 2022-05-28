@@ -1,4 +1,9 @@
 class Skills(displayName:String, value:Int, rarity:String, variety:Any) {
+    var displayName = displayName
+    var value = value
+    val rarity = rarity
+    val variety = variety
+
 //
 //    fun oneOf(vararg options: String): String {
 //        return options.random()}

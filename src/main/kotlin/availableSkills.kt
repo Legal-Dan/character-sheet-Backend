@@ -115,7 +115,7 @@ val skills = mapOf<String, Skills>(
     ),
     "fightingOther" to Skills(
         displayName = "Fighting: ",
-        value = 15,
+        value = 5,
         rarity = "Uncommon",
         variety = mutableMapOf("Axe" to 15, "Garrote" to 15, "Sword" to 20, "Whip" to 5)
     ),
@@ -133,9 +133,9 @@ val skills = mapOf<String, Skills>(
     ),
     "firearmsOther" to Skills(
         displayName = "Firearms: ",
-        value = 15,
+        value = 10,
         rarity = "Uncommon",
-        variety = mutableMapOf("Bow" to 15, "Flamethrower" to 10, "Machine Gun" to 0)
+        variety = mutableMapOf("Bow" to 15, "Flamethrower" to 10, "Machine Gun" to 10)
     ),
     "firstAid" to Skills(
         displayName = "First Aid",

@@ -7,7 +7,8 @@ class PlayableCharacter(name:String, occupation:String, age:Int, statsGeneration
 
     val characteristics = Characteristics(statsGeneration, highestValue)
 
-//    val characterSkills = skills
-//
+    val characterSkills = skills
+
+
 //    val occupations = Occupations(characterSkills)
 }
