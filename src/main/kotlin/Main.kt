@@ -1,5 +1,7 @@
 package main
 
+import PlayableCharacter
+import com.beust.klaxon.Klaxon
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.data.annotation.Id
@@ -35,10 +37,30 @@ class MessageResource(val service: MessageService)  {
 
     @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
     @PostMapping("/getUsers")
-    fun post(@RequestBody message: String) {
-        println(message)
+    fun post(@RequestBody message: String): String {
+        data class Character(val charName: String, val occupation: String, val age: String, val statsGeneration: String, val highestValue:String)
+
+        val result = Klaxon()
+            .parse<Character>(message)
+        if (result != null) {
+            val generatedCharacter = PlayableCharacter(result.charName, result.occupation, result.age.toInt(), result.statsGeneration, result.highestValue)
+            val returnName = generatedCharacter.name
+            val returnAge = generatedCharacter.age
+            val returnOccupation = generatedCharacter.occupation
+            val flatStats = generatedCharacter.characteristics.assignedCharacteristic
+            var returnStats = ""
+            for (stat in flatStats){
+                returnStats += ", " + stat.value.name + ": " + stat.value.value
+            }
+            val toReturn = "$returnName is a $returnAge year old $returnOccupation with base characteristics of$returnStats"
+
+            class ReturnString(val text: String)
+            val toReturnJson = ReturnString(toReturn)
+            return Klaxon().toJsonString(toReturnJson)
+        }
+        return Klaxon().toJsonString("TODO")
+        }
     }
-}
 
 @Table("messages")
 data class Message(@Id val id: String?, val text: String)
