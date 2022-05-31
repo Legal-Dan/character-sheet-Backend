@@ -8,15 +8,14 @@ class PlayableCharacter(name:String, era:String, occupation:String, age:Int, sta
 
     val characteristics = Characteristics(statsGeneration, highestValue)
     val characterSkills = skillsByEra()
-    val characterOccupation = occupations["antiquarian"]
-    val careerSkills = assignRandom(characterOccupation!!.careerSkills)
-    val randomSkillsList = randomSkillListGenerator()
+    val characterOccupation = occupations[occupation]
+    val careerSkills = assignCharacterSkills(characterOccupation!!.careerSkills)
 
-    private fun assignRandom(tempSkills: List<String>): List<String> {
+    private fun assignCharacterSkills(tempSkills: List<String>): List<String> {
         val toReturn = mutableListOf<String>()
         for (skill in tempSkills){
             if (skill == "random"){
-                toReturn += randomSkillsList.random()
+                toReturn += chooseRandom(randomSkillList())
             }
             else {
                 toReturn += skill
@@ -25,19 +24,19 @@ class PlayableCharacter(name:String, era:String, occupation:String, age:Int, sta
         return toReturn
     }
 
-    fun randomSkillListGenerator(): MutableList<String> {
+    fun randomSkillList(): MutableList<String> {
         val temp = mutableListOf<String>()
-        for (skill in skills){
-            if (skill.value.era.contains(era) && skill.value.rarity.equals("Very Common")){
+        for (currentSkill in skills){
+            if (currentSkill.value.era.contains(era) && currentSkill.value.rarity.equals("Very Common")){
                 repeat(4) {
-                    temp += skill.key
+                    temp += currentSkill.key
                 }
-            }else if (skill.value.era.contains(era) && skill.value.rarity.equals("Common")){
+            }else if (currentSkill.value.era.contains(era) && currentSkill.value.rarity.equals("Common")){
                 repeat(2) {
-                    temp += skill.key
+                    temp += currentSkill.key
                 }
-            }else if (skill.value.era.contains(era) && skill.value.rarity.equals("Uncommon")){
-                temp += skill.key
+            }else if (currentSkill.value.era.contains(era) && currentSkill.value.rarity.equals("Uncommon")){
+                temp += currentSkill.key
             }
         }
         return temp
@@ -50,5 +49,16 @@ class PlayableCharacter(name:String, era:String, occupation:String, age:Int, sta
                 temp += skill.key to skill.value
         }
         return temp
+    }
+
+    private fun chooseRandom(randomSkillList: List<String>):String{
+        var toReturn:String? = null
+        while(toReturn == null){
+            val temp = randomSkillList.random()
+            if (!characterOccupation!!.careerSkills.contains(temp)) {
+                toReturn = temp
+            }
+        }
+        return toReturn
     }
 }

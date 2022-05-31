@@ -1,5 +1,5 @@
 val occupations = mapOf<String, Occupations>(
-    "antiquarian" to Occupations(
+    "Antiquarian" to Occupations(
         displayName = "Antiquarian",
         era = listOf<String>("classic"),
         careerSkills = listOf("appraise", "art", "history", "libraryUse", "languageOther", "spotHidden", "random",
