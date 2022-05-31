@@ -2,6 +2,7 @@ package main
 
 import PlayableCharacter
 import com.beust.klaxon.Klaxon
+import occupations
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.data.annotation.Id
@@ -9,7 +10,6 @@ import org.springframework.data.jdbc.repository.query.Query
 import org.springframework.data.relational.core.mapping.Table
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -24,15 +24,14 @@ fun main(args: Array<String>) {
 
 @RestController
 class MessageResource(val service: MessageService)  {
+
     @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
-    @GetMapping("/getUsers")
-    fun index() : List<Message> {
-        val sampleList = listOf(
-            Message("1", "Hello!"),
-            Message("2", "Bonjour!"),
-            Message("3", "Privet!")
+    @PostMapping("/getOccupations")
+    fun get(@RequestBody title: String) : List<Set<String>> {
+        println(title)
+        val occupationsList = listOf(occupations.keys
         )
-        return sampleList;
+        return occupationsList;
     }
 
     @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
@@ -54,6 +53,7 @@ class MessageResource(val service: MessageService)  {
             val returnAge = generatedCharacter.age
             val returnOccupation = generatedCharacter.occupation
             val flatStats = generatedCharacter.characteristics.assignedCharacteristic
+            val flatCareerSkills = generatedCharacter.careerSkills.toString()
             var returnStats = ""
             var returnSkills = ""
             for (stat in flatStats){
@@ -64,7 +64,7 @@ class MessageResource(val service: MessageService)  {
                 returnSkills += ", " + skill.value.displayName + ": " + skill.value.value
             }
 
-            val toReturn = "$returnName is a $returnAge year old $returnOccupation with base characteristics of$returnStats. Current skills are set to$returnSkills."
+            val toReturn = "$returnName is a $returnAge year old $returnOccupation with base characteristics of$returnStats. Career skills are: $flatCareerSkills. Current skills are set to$returnSkills."
 
             class ReturnString(val text: String)
             val toReturnJson = ReturnString(toReturn)

@@ -8,9 +8,24 @@ class PlayableCharacter(name:String, era:String, occupation:String, age:Int, sta
 
     val characteristics = Characteristics(statsGeneration, highestValue)
     val characterSkills = skillsByEra()
+    val characterOccupation = occupations["antiquarian"]
+    val careerSkills = assignRandom(characterOccupation!!.careerSkills)
     val randomSkillsList = randomSkillListGenerator()
 
-    private fun randomSkillListGenerator(): Any {
+    private fun assignRandom(tempSkills: List<String>): List<String> {
+        val toReturn = mutableListOf<String>()
+        for (skill in tempSkills){
+            if (skill == "random"){
+                toReturn += randomSkillsList.random()
+            }
+            else {
+                toReturn += skill
+            }
+        }
+        return toReturn
+    }
+
+    fun randomSkillListGenerator(): MutableList<String> {
         val temp = mutableListOf<String>()
         for (skill in skills){
             if (skill.value.era.contains(era) && skill.value.rarity.equals("Very Common")){
@@ -36,7 +51,4 @@ class PlayableCharacter(name:String, era:String, occupation:String, age:Int, sta
         }
         return temp
     }
-
-
-//    val occupations = Occupations(characterSkills)
 }
