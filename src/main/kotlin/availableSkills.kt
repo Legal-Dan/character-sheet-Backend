@@ -6,7 +6,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Common",
         variety = false
     ),
-    "accounting" to Skills(
+    "accountingDarkAge" to Skills(
         displayName = "Accounting",
         era = listOf<String>("darkAge"),
         value = 10,
@@ -20,14 +20,14 @@ val skills = mapOf<String, Skills>(
         rarity = "Uncommon",
         variety = false
     ),
-    "animalHandling" to Skills(
+    "animalHandlingDarkAge" to Skills(
         displayName = "Animal Handling",
         era = listOf<String>("darkAge"),
         value = 15,
         rarity = "Common",
         variety = false
     ),
-    "animalHandling" to Skills(
+    "animalHandlingGaslight" to Skills(
         displayName = "Animal Handling",
         era = listOf<String>("gaslight"),
         value = 5,
@@ -62,7 +62,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Common",
         variety = mutableMapOf("Acting" to 5, "Carpentry" to 5, "Dancing" to 5, "Fine Art" to 5, "Forgery" to 5, "Writing" to 5, "Singing" to 5, "Photography" to 5, "Pottery" to 5, "Musician" to 5)
     ),
-    "art" to Skills(
+    "artDarkAge" to Skills(
         displayName = "Art and Craft",
         era = listOf<String>("darkAge"),
         value = 5,
@@ -160,7 +160,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Common",
         variety = false
     ),
-    "elecRepair" to Skills(
+    "elecRepairGaslight" to Skills(
         displayName = "Electrical Repair",
         era = listOf<String>("gaslight"),
         value = 1,
@@ -188,7 +188,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Uncommon",
         variety = mutableMapOf("Axe" to 15, "Garrote" to 15, "Sword" to 20, "Whip" to 5)
     ),
-    "fightingOther" to Skills(
+    "fightingOtherDarkAge" to Skills(
         displayName = "Fighting: Other",
         era = listOf<String>("darkAge"),
         value = 5,
@@ -215,13 +215,6 @@ val skills = mapOf<String, Skills>(
         value = 10,
         rarity = "Uncommon",
         variety = mutableMapOf("Bow" to 15, "Flamethrower" to 10, "Machine Gun" to 10)
-    ),
-    "firearmsBow" to Skills(
-        displayName = "Firearms: Bow",
-        era = listOf<String>("gaslight"),
-        value = 15,
-        rarity = "Uncommon",
-        variety = false
     ),
     "firstAid" to Skills(
         displayName = "First Aid",
@@ -265,7 +258,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Common",
         variety = false
     ),
-    "jump" to Skills(
+    "jumpDarkAge" to Skills(
         displayName = "Jump",
         era = listOf<String>("darkAge"),
         value = 25,
@@ -286,7 +279,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Common",
         variety = mutableMapOf("Latin" to 1, "Spanish" to 1, "French" to 1, "German" to 1)
     ),
-    "languageOther" to Skills(
+    "languageOtherDarkAge" to Skills(
         displayName = "Language: Other",
         era = listOf<String>("darkAge"),
         value = 1,
@@ -307,7 +300,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Very Common",
         variety = false
     ),
-    "libraryUse" to Skills(
+    "libraryUseDarkAge" to Skills(
         displayName = "Library Use",
         era = listOf<String>("darkAge"),
         value = 5,
@@ -321,7 +314,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Very Common",
         variety = false
     ),
-    "listen" to Skills(
+    "listenDarkAge" to Skills(
         displayName = "Listen",
         era = listOf<String>("darkAge"),
         value = 25,
@@ -356,7 +349,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Common",
         variety = false
     ),
-    "naturalWorld" to Skills(
+    "naturalWorldDarkAge" to Skills(
         displayName = "Natural World",
         era = listOf<String>("darkAge"),
         value = 20,
@@ -405,7 +398,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Common",
         variety = false
     ),
-    "persuade" to Skills(
+    "persuadeDarkAge" to Skills(
         displayName = "Persuade",
         era = listOf<String>("darkAge"),
         value = 15,
@@ -419,14 +412,14 @@ val skills = mapOf<String, Skills>(
         rarity = "Common",
         variety = mutableMapOf("Aircraft" to 1, "Boat" to 1)
     ),
-    "pilot" to Skills(
+    "pilotGaslight" to Skills(
         displayName = "Pilot",
         era = listOf<String>("gaslight"),
         value = 1,
         rarity = "Common",
         variety = mutableMapOf("Balloon" to 1, "Boat" to 1)
     ),
-    "pilotBoat" to Skills(
+    "pilotBoatDarkAge" to Skills(
         displayName = "Pilot Boat",
         era = listOf<String>("darkAge"),
         value = 1,
@@ -434,6 +427,13 @@ val skills = mapOf<String, Skills>(
         variety = false
     ),
     "rangedWeapon" to Skills(
+        displayName = "Ranged Weapon: Bow",
+        era = listOf<String>("gaslight"),
+        value = 15,
+        rarity = "Uncommon",
+        variety = false
+    ),
+    "rangedWeaponDarkAge" to Skills(
         displayName = "Ranged Weapon",
         era = listOf<String>("darkAge"),
         value = 10,
@@ -496,7 +496,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Common",
         variety = mutableMapOf("Astronomy" to 1, "Biology" to 1, "Chemistry" to 1, "Geology" to 1, "Mathematics" to 1, "Pharmacology" to 1, "Physics" to 1)
     ),
-    "sciences" to Skills(
+    "sciencesDarkAge" to Skills(
         displayName = "Science",
         era = listOf<String>("darkAge"),
         value = 1,
@@ -546,7 +546,7 @@ val skills = mapOf<String, Skills>(
         variety = false
     ),
     "swim" to Skills(
-        displayName = "Swim",
+        displayName = "SwimDarkAge",
         era = listOf<String>("darkAge"),
         value = 25,
         rarity = "Common",
@@ -559,7 +559,7 @@ val skills = mapOf<String, Skills>(
         rarity = "Common",
         variety = false
     ),
-    "throwSkill" to Skills(
+    "throwSkillDarkAge" to Skills(
         displayName = "Throw",
         era = listOf<String>("darkAge"),
         value = 25,

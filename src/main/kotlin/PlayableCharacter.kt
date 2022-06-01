@@ -10,6 +10,7 @@ class PlayableCharacter(name:String, era:String, occupation:String, age:Int, sta
     val characterSkills = skillsByEra()
     val characterOccupation = occupations[occupation]
     val careerSkills = assignCharacterSkills(characterOccupation!!.careerSkills)
+    val skillList = AssignedSkills(careerSkills, characterSkills, characterOccupation!!.creditRatingLow, characterOccupation!!.creditRatingHigh)
 
     private fun assignCharacterSkills(tempSkills: List<String>): List<String> {
         val toReturn = mutableListOf<String>()
