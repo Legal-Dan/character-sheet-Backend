@@ -43,28 +43,21 @@ class MessageResource(val service: MessageService)  {
             .parse<Character>(message)
         if (result != null) {
             val generatedCharacter = PlayableCharacter(result.charName, result.era, result.occupation, result.age.toInt(), result.statsGeneration, result.highestValue)
-
-            generatedCharacter.characterSkills
-            generatedCharacter.characterSkills["dodge"]!!.value = generatedCharacter.characteristics.assignedCharacteristic["dexterity"]!!.value/2
-            generatedCharacter.characterSkills["languageOwn"]!!.displayName = "Language: English"
-            generatedCharacter.characterSkills["languageOwn"]!!.value = generatedCharacter.characteristics.assignedCharacteristic["education"]!!.value
-
             val returnName = generatedCharacter.name
             val returnAge = generatedCharacter.age
             val returnOccupation = generatedCharacter.occupation
             val flatStats = generatedCharacter.characteristics.assignedCharacteristic
-            val flatCareerSkills = generatedCharacter.careerSkills.toString()
             var returnStats = ""
             var returnSkills = ""
             for (stat in flatStats){
                 returnStats += ", " + stat.value.name + ": " + stat.value.value
             }
 
-            for (skill in generatedCharacter.characterSkills){
+            for (skill in generatedCharacter.characterSkills.assignedCharacterSkills){
                 returnSkills += ", " + skill.value.displayName + ": " + skill.value.value
             }
 
-            val toReturn = "$returnName is a $returnAge year old $returnOccupation with base characteristics of$returnStats. Career skills are: $flatCareerSkills. Current skills are set to$returnSkills."
+            val toReturn = "$returnName is a $returnAge year old $returnOccupation with base characteristics of$returnStats. Current skills are set to$returnSkills."
 
             class ReturnString(val text: String)
             val toReturnJson = ReturnString(toReturn)
