@@ -545,8 +545,8 @@ val skills = mapOf<String, Skills>(
         rarity = "Common",
         variety = false
     ),
-    "swim" to Skills(
-        displayName = "SwimDarkAge",
+    "swimDarkAge" to Skills(
+        displayName = "Swim",
         era = listOf<String>("darkAge"),
         value = 25,
         rarity = "Common",

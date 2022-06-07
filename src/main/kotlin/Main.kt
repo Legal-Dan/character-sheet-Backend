@@ -1,5 +1,6 @@
 package main
 
+import Occupations
 import PlayableCharacter
 import com.beust.klaxon.Klaxon
 import occupations
@@ -27,11 +28,19 @@ class MessageResource(val service: MessageService)  {
 
     @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
     @PostMapping("/getOccupations")
-    fun get(@RequestBody title: String) : List<Set<String>> {
-        println(title)
-        val occupationsList = listOf(occupations.keys
-        )
-        return occupationsList;
+    fun get(@RequestBody title: String): List<String> {
+        val era = title.subSequence(10, title.length-2).toString()
+        return filterByEra(occupations, era);
+    }
+
+    private fun filterByEra(occupations: Map<String, Occupations>, era: String): List<String> {
+        var toReturn = listOf("Random")
+        for (occupation in occupations){
+            if (occupation.value.era.contains(era)){
+                toReturn = toReturn + occupation.key
+            }
+        }
+        return toReturn
     }
 
     @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
