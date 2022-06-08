@@ -1,63 +1,65 @@
+class SkillsList{
+
 val skills = mapOf<String, Skills>(
     "accounting" to Skills(
         displayName = "Accounting",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 5,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "accountingDarkAge" to Skills(
         displayName = "Accounting",
         era = listOf<String>("darkAge"),
         value = 10,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "animalHandling" to Skills(
         displayName = "Animal Handling",
-        era = listOf<String>("classic"),
+        era = listOf<String>("classic", "modern"),
         value = 5,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "animalHandlingDarkAge" to Skills(
         displayName = "Animal Handling",
         era = listOf<String>("darkAge"),
         value = 15,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "animalHandlingGaslight" to Skills(
         displayName = "Animal Handling",
         era = listOf<String>("gaslight"),
         value = 5,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "anthropology" to Skills(
         displayName = "Anthropology",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 1,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "appraise" to Skills(
         displayName = "Appraise",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 5,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "archaeology" to Skills(
         displayName = "Archaeology",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 1,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "art" to Skills(
         displayName = "Art and Craft",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 5,
         rarity = "Common",
         variety = mutableMapOf("Acting" to 5, "Carpentry" to 5, "Dancing" to 5, "Fine Art" to 5, "Forgery" to 5, "Writing" to 5, "Singing" to 5, "Photography" to 5, "Pottery" to 5, "Musician" to 5)
@@ -71,119 +73,119 @@ val skills = mapOf<String, Skills>(
     ),
     "artillery" to Skills(
         displayName = "Artillery",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 1,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "charm" to Skills(
         displayName = "Charm",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 15,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "climb" to Skills(
         displayName = "Climb",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "creditRating" to Skills(
         displayName = "Credit Rating",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 0,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "cthulhuMythos" to Skills(
         displayName = "Cthulhu Mythos",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 0,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "demolitions" to Skills(
         displayName = "Demolitions",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 1,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "disguise" to Skills(
         displayName = "Disguise",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 5,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "diving" to Skills(
         displayName = "Diving",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 1,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "dodge" to Skills(
         displayName = "Dodge",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 0,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "driveAuto" to Skills(
         displayName = "Drive Auto",
-        era = listOf<String>("classic"),
+        era = listOf<String>("classic", "modern"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "driveCarriage" to Skills(
         displayName = "Drive Carriage",
         era = listOf<String>("gaslight"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "driveHorse" to Skills(
         displayName = "Drive Horses/Oxen",
         era = listOf<String>("darkAge"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "elecRepair" to Skills(
         displayName = "Electrical Repair",
-        era = listOf<String>("classic"),
+        era = listOf<String>("classic", "modern"),
         value = 10,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "elecRepairGaslight" to Skills(
         displayName = "Electrical Repair",
         era = listOf<String>("gaslight"),
         value = 1,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "fastTalk" to Skills(
         displayName = "Fast Talk",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 5,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "fightingBrawl" to Skills(
         displayName = "Fighting: Brawl",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 25,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "fightingOther" to Skills(
         displayName = "Fighting: Other",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 5,
         rarity = "Uncommon",
         variety = mutableMapOf("Axe" to 15, "Garrote" to 15, "Sword" to 20, "Whip" to 5)
@@ -197,84 +199,84 @@ val skills = mapOf<String, Skills>(
     ),
     "firearmsHandgun" to Skills(
         displayName = "Firearms: Handgun",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "firearmsRifle" to Skills(
         displayName = "Firearms: Rifle/Shotgun",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 25,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "firearmsOther" to Skills(
         displayName = "Firearms: Other",
-        era = listOf<String>("classic"),
+        era = listOf<String>("classic", "modern"),
         value = 10,
         rarity = "Uncommon",
         variety = mutableMapOf("Bow" to 15, "Flamethrower" to 10, "Machine Gun" to 10)
     ),
     "firstAid" to Skills(
         displayName = "First Aid",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 30,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "insight" to Skills(
         displayName = "Insight",
         era = listOf<String>("darkAge"),
         value = 5,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "history" to Skills(
         displayName = "History",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 5,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "hypnosis" to Skills(
         displayName = "Hypnosis",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 1,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "intimidate" to Skills(
         displayName = "Intimidate",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 15,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "jump" to Skills(
         displayName = "Jump",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "jumpDarkAge" to Skills(
         displayName = "Jump",
         era = listOf<String>("darkAge"),
         value = 25,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "languageOwn" to Skills(
         displayName = "Language: Own",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 0,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "languageOther" to Skills(
         displayName = "Language: Other",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 1,
         rarity = "Common",
         variety = mutableMapOf("Latin" to 1, "Spanish" to 1, "French" to 1, "German" to 1)
@@ -288,66 +290,66 @@ val skills = mapOf<String, Skills>(
     ),
     "law" to Skills(
         displayName = "Law",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 5,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "libraryUse" to Skills(
         displayName = "Library Use",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 20,
         rarity = "Very Common",
-        variety = false
+        variety = null
     ),
     "libraryUseDarkAge" to Skills(
         displayName = "Library Use",
         era = listOf<String>("darkAge"),
         value = 5,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "listen" to Skills(
         displayName = "Listen",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 20,
         rarity = "Very Common",
-        variety = false
+        variety = null
     ),
     "listenDarkAge" to Skills(
         displayName = "Listen",
         era = listOf<String>("darkAge"),
         value = 25,
         rarity = "Very Common",
-        variety = false
+        variety = null
     ),
     "locksmith" to Skills(
         displayName = "Locksmith",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 1,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "mechRepair" to Skills(
         displayName = "Mechanical Repair",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 10,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "medicine" to Skills(
         displayName = "Medicine",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 1,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "naturalWorld" to Skills(
         displayName = "Natural World",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 10,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "naturalWorldDarkAge" to Skills(
         displayName = "Natural World",
@@ -358,24 +360,24 @@ val skills = mapOf<String, Skills>(
     ),
     "navigate" to Skills(
         displayName = "Navigate",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 10,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "occult" to Skills(
         displayName = "Occult",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 5,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "operateHeavyMachinery" to Skills(
         displayName = "Operate Heavy Machinery",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 1,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "otherKingdom" to Skills(
         displayName = "Other Kigdom",
@@ -389,25 +391,25 @@ val skills = mapOf<String, Skills>(
         era = listOf<String>("darkAge"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "persuade" to Skills(
         displayName = "Persuade",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 10,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "persuadeDarkAge" to Skills(
         displayName = "Persuade",
         era = listOf<String>("darkAge"),
         value = 15,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "pilot" to Skills(
         displayName = "Pilot",
-        era = listOf<String>("classic"),
+        era = listOf<String>("classic", "modern"),
         value = 1,
         rarity = "Common",
         variety = mutableMapOf("Aircraft" to 1, "Boat" to 1)
@@ -424,14 +426,14 @@ val skills = mapOf<String, Skills>(
         era = listOf<String>("darkAge"),
         value = 1,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "rangedWeapon" to Skills(
         displayName = "Ranged Weapon: Bow",
         era = listOf<String>("gaslight"),
         value = 15,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "rangedWeaponDarkAge" to Skills(
         displayName = "Ranged Weapon",
@@ -452,46 +454,46 @@ val skills = mapOf<String, Skills>(
         era = listOf<String>("darkAge"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "religion" to Skills(
         displayName = "Religion",
         era = listOf<String>("darkAge"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "psychoanalysis" to Skills(
         displayName = "Psychoanalysis",
-        era = listOf<String>("classic"),
+        era = listOf<String>("classic", "modern"),
         value = 1,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "psychology" to Skills(
         displayName = "Psychology",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 10,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "readLips" to Skills(
         displayName = "Read Lips",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 1,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "ride" to Skills(
         displayName = "Ride",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 5,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "sciences" to Skills(
         displayName = "Science",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 1,
         rarity = "Common",
         variety = mutableMapOf("Astronomy" to 1, "Biology" to 1, "Chemistry" to 1, "Geology" to 1, "Mathematics" to 1, "Pharmacology" to 1, "Physics" to 1)
@@ -505,71 +507,71 @@ val skills = mapOf<String, Skills>(
     ),
     "sleightOfHand" to Skills(
         displayName = "Sleight of Hand",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 10,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "spotHidden" to Skills(
         displayName = "Spot Hidden",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 25,
         rarity = "Very Common",
-        variety = false
+        variety = null
     ),
     "status" to Skills(
         displayName = "Status",
         era = listOf<String>("darkAge"),
         value = 0,
         rarity = "Uncommon",
-        variety = false
+        variety = null
     ),
     "stealth" to Skills(
         displayName = "Stealth",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "survival" to Skills(
        displayName = "Survival",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 10,
         rarity = "Common",
         variety = mutableMapOf("Desert" to 10, "Sea" to 10, "Arctic" to 10)
     ),
     "swim" to Skills(
         displayName = "Swim",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "swimDarkAge" to Skills(
         displayName = "Swim",
         era = listOf<String>("darkAge"),
         value = 25,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "throwSkill" to Skills(
         displayName = "Throw",
-        era = listOf<String>("gaslight", "classic"),
+        era = listOf<String>("gaslight", "classic", "modern"),
         value = 20,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "throwSkillDarkAge" to Skills(
         displayName = "Throw",
         era = listOf<String>("darkAge"),
         value = 25,
         rarity = "Common",
-        variety = false
+        variety = null
     ),
     "track" to Skills(
         displayName = "Track",
-        era = listOf<String>("darkAge", "gaslight", "classic"),
+        era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 10,
         rarity = "Common",
-        variety = false)
-    )
+        variety = null)
+    )}

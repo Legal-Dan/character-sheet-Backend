@@ -1,3 +1,4 @@
+class OccupationsList{
 val occupations = mapOf<String, Occupations>(
     "Adventurer" to Occupations(
         displayName = "Adventurer",
@@ -46,7 +47,7 @@ val occupations = mapOf<String, Occupations>(
     "Athlete" to Occupations(
         displayName = "Athlete",
         era = listOf<String>("classic", "modern"),
-        careerSkills = listOf("creditRating", "climb", "jump", "fightingBrawl", "ride", "swim", "throw", "random",
+        careerSkills = listOf("creditRating", "climb", "jump", "fightingBrawl", "ride", "swim", "throwSkill", "random",
             oneOf(listOf("charm", "fastTalk", "intimidate", "persuade"))),
         creditRatingLow = 9,
         creditRatingHigh = 70,
@@ -55,7 +56,7 @@ val occupations = mapOf<String, Occupations>(
     "Author" to Occupations(
         displayName = "Author",
         era = listOf<String>("gaslight", "classic", "modern"),
-        careerSkills = listOf("creditRating", "art-literature", "history", "libraryUse", "languageOther", "languageOwn", "psychology", "random",
+        careerSkills = listOf("creditRating", "art-Writing", "history", "libraryUse", "languageOther", "languageOwn", "psychology", "random",
             oneOf(listOf("naturalWorld", "occult"))),
         creditRatingLow = 9,
         creditRatingHigh = 30,
@@ -73,7 +74,7 @@ val occupations = mapOf<String, Occupations>(
     "Cleric" to Occupations(
         displayName = "Cleric",
         era = listOf<String>("darkAge"),
-        careerSkills = listOf("status", "charm", "libraryUseDarkAge", "persuadeDarkAge", "languageOtherDarkAge-Latin", "ownKingdom", "religion", "random",
+        careerSkills = listOf("status", "charm", "libraryUseDarkAge", "persuadeDarkAge", "languageOtherDarkAge: Latin", "ownKingdom", "religion", "random",
             oneOf(listOf("readAndWrite-Latin", "readAndWrite-Own"))),
         creditRatingLow = 9,
         creditRatingHigh = 99,
@@ -90,8 +91,9 @@ val occupations = mapOf<String, Occupations>(
     "Criminal" to Occupations(
         displayName = "Criminal",
         era = listOf<String>("gaslight", "classic", "modern"),
-        careerSkills = listOf("creditRating", "appraise", "art", "history", "libraryUse", "languageOther", "spotHidden", "random",
-            multipleOf(mutableListOf("appraise", "disguise", "fightingBrawl", "fightingOther", "firearmsHandgun", "firearmsRifle", "firearmsOther", "locksmith", "mechRepair", "sleightOfHand" ), 4)) as List<String>,
+        careerSkills = listOf("creditRating", "psychology", "spotHidden", "stealth",
+                oneOf(listOf("charm", "fastTalk", "intimidate", "persuade"))) +
+                multipleOf(listOf("appraise", "disguise", "fightingBrawl", "fightingOther", "firearmsHandgun", "firearmsRifle", "firearmsOther-Machine Gun", "locksmith", "mechRepair", "sleightOfHand" ), 4),
         creditRatingLow = 5,
         creditRatingHigh = 65,
         occupationPoints = listOf("education", "education", "dexterity/strength", "dexterity/strength")
@@ -102,13 +104,12 @@ private fun oneOf(options: List<String>): String {
     return options.random()
 }
 
-private fun multipleOf(options: MutableList<String>, number:Int): MutableList<String> {
-    val remainingOptions = options
+private fun multipleOf(options: List<String>, number:Int): MutableList<String> {
+    val remainingOptions = options.toMutableList()
     val toReturn = mutableListOf<String>()
     while(toReturn.size < number){
         toReturn += remainingOptions.random()
         remainingOptions.remove(toReturn.last())
     }
     return toReturn
-}
-
+}}

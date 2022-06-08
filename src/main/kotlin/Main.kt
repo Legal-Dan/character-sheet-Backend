@@ -1,9 +1,10 @@
 package main
 
 import Occupations
+import OccupationsList
 import PlayableCharacter
+import SkillsList
 import com.beust.klaxon.Klaxon
-import occupations
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.data.annotation.Id
@@ -30,7 +31,7 @@ class MessageResource(val service: MessageService)  {
     @PostMapping("/getOccupations")
     fun get(@RequestBody title: String): List<String> {
         val era = title.subSequence(10, title.length-2).toString()
-        return filterByEra(occupations, era);
+        return filterByEra(OccupationsList().occupations, era);
     }
 
     private fun filterByEra(occupations: Map<String, Occupations>, era: String): List<String> {

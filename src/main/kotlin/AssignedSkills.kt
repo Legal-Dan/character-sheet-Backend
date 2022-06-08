@@ -1,3 +1,5 @@
+import java.util.*
+
 class AssignedSkills(
     characterSkills: MutableMap<String, Skills>,
     occupation:Occupations,
@@ -7,8 +9,9 @@ class AssignedSkills(
     val occupation = occupation
     val era = era
     val characteristics = characteristics
-    val careerSkills = assignCharacterSkills(occupation.careerSkills)
     val characterSkills = characterSkills
+    val careerSkills = assignCharacterSkills(occupation.careerSkills)
+
     val assignedCharacterSkills = assign(careerSkills)
 
     private fun updateCharacteristicSkills(characterSkills: MutableMap<String, Skills>): MutableMap<String, Skills> {
@@ -24,15 +27,24 @@ class AssignedSkills(
         for (skill in careerSkills){
             if (skill == "creditRating"){
                 var creditValue = 0
-                while (creditValue > occupation.creditRatingHigh || creditValue < occupation.creditRatingLow){
-                    creditValue = standardArray.random()
+                if (occupation.creditRatingLow >= 70){
+                    creditValue = 70
+                }
+                else if (occupation.creditRatingHigh <= 40){
+                    creditValue = 40
+                }
+                else{
+                    while (creditValue > occupation.creditRatingHigh || creditValue < occupation.creditRatingLow){
+                        creditValue = standardArray.random()
+                    }
                 }
                 assignValue("creditRating", creditValue, "replace")
                 standardArray.remove(creditValue)
             }
             else{
-                assignValue(skill, standardArray.random(), "replace")
-                standardArray.remove(characterSkills[skill]!!.value)
+                val temp = standardArray.random()
+                assignValue(skill, temp, "replace")
+                standardArray.remove(temp)
             }
         }
         assignInterests()
@@ -51,23 +63,60 @@ class AssignedSkills(
     }
 
     private fun assignValue(skill:String, skillValue:Int, function:String): Skills? {
-        if(function == "replace"){
-            val skillObject = characterSkills[skill]
-            skillObject!!.value = skillValue
-            return skillObject
-        }
+        val skillObject = characterSkills[skillParser(skill)] ?: throw error("assignValue says that $skill is not a skill!")
+        if (skillValue == null) throw error("assignValue says that that's not a skill value!")
         else{
-            val skillObject = characterSkills[skill]
-            skillObject!!.value += skillValue
-            return skillObject
+            return if(function == "replace"){
+                skillObject.value = skillValue
+                skillObject
+            } else{
+                skillObject.value += skillValue
+                skillObject
+            }
         }
+    }
+
+    private fun skillParser(skill: String): String {
+        if (skill.contains("-")){
+            val skillPair = skill.split("-")
+            return skillConstructor(skillPair)
+        }
+        val skillObject = characterSkills[skill] ?: throw error("skillParser says that $skill is not a skill!")
+        return if (skillObject.variety.isNullOrEmpty()){
+            skill
+        } else {
+            val map = skillObject.variety
+            val skillPair = listOf(skill, map.entries.elementAt(Random().nextInt(map.size)).key)
+            skillConstructor(skillPair)
+        }
+    }
+
+    private fun skillConstructor(skillPair: List<String>): String {
+        val skill = skillPair[0]
+        val variety = skillPair[1]
+        val newSkill = "$skill: $variety"
+        val skillObject = characterSkills[skill] ?: throw error("skillConstructor says that $skill is not a skill!")
+        val skillObjectVarietyList = skillObject.variety ?: throw error("skillConstructor says that $skill does not have a variety!")
+        val skillObjectVariety = skillObjectVarietyList[variety] ?: throw error("skillConstructor says that $variety is not in the $skill list!")
+        characterSkills += newSkill to Skills(
+            displayName = newSkill.replaceFirstChar { it.titlecase() },
+            era = skillObject.era,
+            value = skillObjectVariety,
+            rarity = skillObject.rarity,
+            variety = null
+        )
+        characterSkills[skill]?.variety?.remove(variety)
+        return newSkill
     }
 
     private fun assignCharacterSkills(tempSkills: List<String>): List<String> {
         val toReturn = mutableListOf<String>()
+        val randomsAssigned = mutableListOf<String>()
         for (skill in tempSkills){
             if (skill == "random"){
-                toReturn += chooseRandom()
+                val temp = chooseRandom(randomsAssigned)
+                toReturn += temp
+                randomsAssigned += temp
             }
             else {
                 toReturn += skill
@@ -78,27 +127,21 @@ class AssignedSkills(
 
     fun randomSkillList(): MutableList<String> {
         val temp = mutableListOf<String>()
-        for (currentSkill in skills){
-            if (currentSkill.value.era.contains(era) && currentSkill.value.rarity.equals("Very Common")){
-                repeat(4) {
-                    temp += currentSkill.key
-                }
-            }else if (currentSkill.value.era.contains(era) && currentSkill.value.rarity.equals("Common")){
-                repeat(2) {
-                    temp += currentSkill.key
-                }
-            }else if (currentSkill.value.era.contains(era) && currentSkill.value.rarity.equals("Uncommon")){
-                temp += currentSkill.key
+        for (currentSkill in characterSkills){
+            when (currentSkill.value.rarity) {
+                "Very Common" -> { repeat(4) { temp += currentSkill.key } }
+                "Common" -> { repeat(2) { temp += currentSkill.key } }
+                "Uncommon" -> { temp += currentSkill.key }
             }
         }
         return temp
     }
 
-    private fun chooseRandom():String{
+    private fun chooseRandom(alreadyAssigned: MutableList<String>):String{
         var toReturn:String? = null
         while(toReturn == null){
             val temp = randomSkillList().random()
-            if (!occupation.careerSkills.contains(temp)) {
+            if (!occupation.careerSkills.contains(temp) && !alreadyAssigned.contains(temp)) {
                 toReturn = temp
             }
         }

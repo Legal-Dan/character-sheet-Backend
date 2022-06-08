@@ -7,7 +7,14 @@ class PlayableCharacterTest{
         val statsGeneration = "standard"
         val highestValue = "none"
         var totalValue = 0
-        val characteristics = PlayableCharacter("test", "classic","Archaeologist", 20, statsGeneration, highestValue).characteristics.assignedCharacteristic
+        val characteristics = PlayableCharacter(
+            "test",
+            "classic",
+            "Archaeologist",
+            20,
+            statsGeneration,
+            highestValue
+        ).characteristics.assignedCharacteristic
         for (charac in characteristics) {
             totalValue += charac.value.value
         }
@@ -23,7 +30,14 @@ class PlayableCharacterTest{
         val statsGeneration = "standard"
         val highestValue = "dexterity"
         val returnValue =
-            PlayableCharacter("test", "Archaeologist", "classic",20, statsGeneration, highestValue).characteristics.assignedCharacteristic[highestValue]!!.value
+            PlayableCharacter(
+                "test",
+                "Archaeologist",
+                "classic",
+                20,
+                statsGeneration,
+                highestValue
+            ).characteristics.assignedCharacteristic[highestValue]!!.value
         assert(returnValue == 70)
     }
 
@@ -32,7 +46,14 @@ class PlayableCharacterTest{
         val statsGeneration = "roll"
         val highestValue = "none"
         var totalValue = 0
-        val characteristics = PlayableCharacter("test", "Archaeologist", "classic",20, statsGeneration, highestValue).characteristics.assignedCharacteristic
+        val characteristics = PlayableCharacter(
+            "test",
+            "Archaeologist",
+            "classic",
+            20,
+            statsGeneration,
+            highestValue
+        ).characteristics.assignedCharacteristic
         for (charac in characteristics) {
             totalValue += charac.value.value
         }
