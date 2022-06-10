@@ -19,19 +19,19 @@ import org.springframework.web.bind.annotation.CrossOrigin
 
 @SpringBootApplication
 class CharacterSheet
-
+var occupationList = listOf<String>()
 fun main(args: Array<String>) {
     runApplication<CharacterSheet>(*args)
 }
 
 @RestController
 class MessageResource(val service: MessageService)  {
-
     @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
     @PostMapping("/getOccupations")
     fun get(@RequestBody title: String): List<String> {
         val era = title.subSequence(10, title.length-2).toString()
-        return filterByEra(OccupationsList().occupations, era);
+        occupationList = filterByEra(OccupationsList().occupations, era)
+        return occupationList;
     }
 
     private fun filterByEra(occupations: Map<String, Occupations>, era: String): List<String> {
@@ -52,7 +52,7 @@ class MessageResource(val service: MessageService)  {
         val result = Klaxon()
             .parse<Character>(message)
         if (result != null) {
-            val generatedCharacter = PlayableCharacter(result.charName, result.era, result.occupation, result.age.toInt(), result.statsGeneration, result.highestValue)
+            val generatedCharacter = PlayableCharacter(result.charName, result.era, parseOccupation(result.occupation), result.age.toInt(), result.statsGeneration, result.highestValue)
             val returnName = generatedCharacter.name
             val returnAge = generatedCharacter.age
             val returnOccupation = generatedCharacter.occupation
@@ -75,7 +75,16 @@ class MessageResource(val service: MessageService)  {
         }
         return Klaxon().toJsonString("TODO")
         }
+
+    private fun parseOccupation(occupation: String): String {
+        return if (occupationList.contains(occupation)){
+            occupation
+        }
+        else {
+            occupationList[(1 until occupationList.size).random()]
+        }
     }
+}
 
 @Table("messages")
 data class Message(@Id val id: String?, val text: String)

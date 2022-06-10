@@ -62,7 +62,7 @@ val skills = mapOf<String, Skills>(
         era = listOf<String>("gaslight", "classic", "modern"),
         value = 5,
         rarity = "Common",
-        variety = mutableMapOf("Acting" to 5, "Carpentry" to 5, "Dancing" to 5, "Fine Art" to 5, "Forgery" to 5, "Writing" to 5, "Singing" to 5, "Photography" to 5, "Pottery" to 5, "Musician" to 5)
+        variety = mutableMapOf("Acting" to 5, "Carpentry" to 5, "Dancing" to 5, "Fine Art" to 5, "Forgery" to 5, "Writing" to 5, "Singing" to 5, "Photography" to 5, "Pottery" to 5, "Musician" to 5, "TechnicalDrawing" to 5)
     ),
     "artDarkAge" to Skills(
         displayName = "Art and Craft",
@@ -89,6 +89,13 @@ val skills = mapOf<String, Skills>(
         displayName = "Climb",
         era = listOf<String>("darkAge", "gaslight", "classic", "modern"),
         value = 20,
+        rarity = "Common",
+        variety = null
+    ),
+    "computerUse" to Skills(
+        displayName = "Computer Use",
+        era = listOf<String>("modern"),
+        value = 5,
         rarity = "Common",
         variety = null
     ),
@@ -167,6 +174,13 @@ val skills = mapOf<String, Skills>(
         era = listOf<String>("gaslight"),
         value = 1,
         rarity = "Uncommon",
+        variety = null
+    ),
+    "electronics" to Skills(
+        displayName = "Electronics",
+        era = listOf<String>("modern"),
+        value = 1,
+        rarity = "Common",
         variety = null
     ),
     "fastTalk" to Skills(
@@ -447,7 +461,7 @@ val skills = mapOf<String, Skills>(
         era = listOf<String>("darkAge"),
         value = 1,
         rarity = "Common",
-        variety = mutableMapOf("Arabic" to 1, "Old English" to 1, "Old French" to 1, "Old German" to 1, "Hebrew" to 1, "Latin" to 1, "Old Norse" to 1, "Occitan" to 1, "Slavonic" to 1, "Syriac" to 1)
+        variety = mutableMapOf("Arabic" to 1, "Old English" to 1, "Old French" to 1, "Old German" to 1, "Own" to 1, "Hebrew" to 1, "Latin" to 1, "Old Norse" to 1, "Occitan" to 1, "Slavonic" to 1, "Syriac" to 1)
     ),
     "repairDevise" to Skills(
         displayName = "Repair/Devise",
@@ -496,7 +510,7 @@ val skills = mapOf<String, Skills>(
         era = listOf<String>("gaslight", "classic", "modern"),
         value = 1,
         rarity = "Common",
-        variety = mutableMapOf("Astronomy" to 1, "Biology" to 1, "Chemistry" to 1, "Geology" to 1, "Mathematics" to 1, "Pharmacology" to 1, "Physics" to 1)
+        variety = mutableMapOf("Agriculture" to 1, "Astronomy" to 1, "Biology" to 1, "Chemistry" to 1, "Geology" to 1, "Mathematics" to 1, "Pharmacology" to 1, "Physics" to 1)
     ),
     "sciencesDarkAge" to Skills(
         displayName = "Science",
