@@ -6,12 +6,13 @@ class Names(region:String, male:List<String>, female:List<String>, surnames:List
     val surnames = surnames
     val languages = languages
 
-    fun randomName(sex:String):String{
-        return if (sex == "M"){
-            "${male.random()} ${surnames.random()}"
-        }
-        else{
-            "${female.random()} ${surnames.random()}"
+    fun randomName(gender:String):String{
+        if (gender == "male"){
+            return "${male.random()} ${surnames.random()}"
+        } else if (gender == "female"){
+            return "${female.random()} ${surnames.random()}"
+        } else {
+            return listOf("${male.random()} ${surnames.random()}", "${female.random()} ${surnames.random()}").random()
         }
     }
 }

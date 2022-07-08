@@ -1,13 +1,16 @@
+import main.languageList
 import java.util.*
 
 class AssignedSkills(
     characterSkills: MutableMap<String, Skills>,
     occupation:Occupations,
     era:String,
-    characteristics: MutableMap<String, Characteristic>
+    characteristics: MutableMap<String, Characteristic>,
+    country: Names
 ) {
     val occupation = occupation
     val era = era
+    val country = country
     val characteristics = characteristics
     val characterSkills = characterSkills
     val careerSkills = assignCharacterSkills(occupation.careerSkills)
@@ -16,8 +19,14 @@ class AssignedSkills(
 
     private fun updateCharacteristicSkills(characterSkills: MutableMap<String, Skills>): MutableMap<String, Skills> {
         characterSkills["dodge"]!!.value = characteristics["dexterity"]!!.value/2
-        characterSkills["languageOwn"]!!.displayName = "Language: English"
+        val assignLanguage = country.languages.random()
+        characterSkills["languageOwn"]!!.displayName = "Language: $assignLanguage"
         characterSkills["languageOwn"]!!.value = characteristics["education"]!!.value
+        for (language in languageList){
+            if (language != assignLanguage){
+                characterSkills["languageOther"]!!.variety?.plusAssign(language to 1)
+            }
+        }
         return characterSkills
     }
 
@@ -86,7 +95,7 @@ class AssignedSkills(
             skill
         } else {
             val map = skillObject.variety
-            val skillPair = listOf(skill, map.entries.elementAt(Random().nextInt(map.size)).key)
+            val skillPair = listOf(skill, map?.entries?.elementAt(Random().nextInt(map.size))!!.key)
             skillConstructor(skillPair)
         }
     }

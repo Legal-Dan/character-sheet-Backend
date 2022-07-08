@@ -3,5 +3,5 @@ class Skills(displayName:String, era:List<String>, value:Int, rarity:String, var
     var era = era
     var value = value
     val rarity = rarity
-    val variety = variety
+    var variety = variety
 }

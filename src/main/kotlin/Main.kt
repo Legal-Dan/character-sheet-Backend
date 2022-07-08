@@ -5,6 +5,7 @@ import Occupations
 import OccupationsList
 import PlayableCharacter
 import com.beust.klaxon.Klaxon
+import generateCountryList
 import importCountry
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -13,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.CrossOrigin
 
-val countryList = listOf("Albania", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bangladesh", "Belgium", "Bosnia and Herzegovina", "Brazil", "Bulgaria", "Canada", "China", "Colombia", "Costa Rica", "Croatia", "Czech Republic", "Denmark", "Egypt", "England", "Estonia", "Finland", "France", "Georgia", "Germany", "Greece", "Hungary", "India", "Indonesia", "Iran", "Ireland", "Israel", "Italy", "Japan", "Korea", "Kyrgyz Republic", "Mexico", "Morocco", "Nepal", "Netherlands", "New Zealand", "Nigeria", "Norway", "Pakistan", "Poland", "Portugal", "Romania", "Russia", "Saudi Arabia", "Scotland", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Tunisia", "Turkey", "Ukraine", "United States", "Vietnam", "Wales")
-val languageList = listOf("Albanian", "Spanish", "Armenian", "English", "German", "Azerbaijani", "Bengali", "Dutch", "French", "Bosnian", "Croatian", "Serbian", "Portuguese", "Bulgarian", "Mandarin", "Czech", "Slovak", "Danish", "Arabic", "Estonian", "Finnish", "Georgian", "Greek", "Hungarian", "Hindi", "Tamil", "Malayalam", "Telugu", "Kannada", "Marathi", "Punjabi", "Assamese", "Odiya", "Gujarathi", "Indonesian", "Persian", "Hebrew", "Italian", "Japanese", "Korean", "Kyrgyz", "Russian", "Tamazight", "Nepali", "Norwegian", "Urdu", "Polish", "Romanian", "Slovene", "Swedish", "Turkish", "Ukrainian", "Vietnamese", "Welsh")
+var countryList = listOf<String>()
+var languageList = listOf<String>()
+var occupationList = listOf<String>()
 
 @SpringBootApplication
 class CharacterSheet
-var occupationList = listOf<String>()
 
 object names: org.jetbrains.exposed.sql.Table(){
     val region = varchar("region", 100)
@@ -43,6 +44,16 @@ class MessageResource() {
         return occupationList;
     }
 
+    @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
+    @PostMapping("/getRegions")
+    fun getRegions(@RequestBody title: String): List<String> {
+        val era = title.subSequence(10, title.length-2).toString()
+        val data = generateCountryList(era)
+        countryList = data[0]
+        languageList = data[1]
+        return listOf("Random") + countryList;
+    }
+
     private fun filterByEra(occupations: Map<String, Occupations>, era: String): List<String> {
         var toReturn = listOf("Random")
         for (occupation in occupations){
@@ -59,6 +70,8 @@ class MessageResource() {
         data class Character(
             val charName: String,
             val era: String,
+            val gender: String,
+            val region: String,
             val occupation: String,
             val age: String,
             val statsGeneration: String,
@@ -67,10 +80,11 @@ class MessageResource() {
 
         val result = Klaxon()
             .parse<Character>(message) ?: throw error("No details found!")
-        val generatedCountry = importCountry(countryList.random())
+        val generatedCountry = countryGenerator(result.region)
         val generatedCharacter = PlayableCharacter(
-            nameGenerator(result.charName, generatedCountry),
+            nameGenerator(result.charName, result.gender, generatedCountry),
             result.era,
+            generatedCountry,
             parseOccupation(result.occupation),
             ageGenerator(result.age),
             result.statsGeneration,
@@ -79,6 +93,7 @@ class MessageResource() {
         val returnName = generatedCharacter.name
         val returnAge = generatedCharacter.age
         val returnOccupation = generatedCharacter.occupation
+        val returnRegion = generatedCountry.region
         val flatStats = generatedCharacter.characteristics.assignedCharacteristic
         var returnStats = ""
         var returnSkills = ""
@@ -91,7 +106,7 @@ class MessageResource() {
         }
 
         val toReturn =
-            "$returnName is a $returnAge year old $returnOccupation with base characteristics of$returnStats. Current skills are set to$returnSkills."
+            "$returnName is a $returnAge year old $returnOccupation from $returnRegion with base characteristics of$returnStats. Current skills are set to$returnSkills."
 
         class ReturnString(val text: String)
 
@@ -107,12 +122,23 @@ class MessageResource() {
         }
     }
 
-    private fun nameGenerator(charName: String, generatedCountry: Names, sex: String = "Random"): String {
+    private fun nameGenerator(charName: String, gender: String, generatedCountry: Names): String {
         return if (charName == "") {
-            generatedCountry?.randomName(sex) ?: String.toString()
+            var updatedGender = gender
+            if (gender == "Random") updatedGender = listOf("male", "female").random()
+            generatedCountry?.randomName(updatedGender)
         } else {
             return charName
         }
+    }
+
+    private fun countryGenerator(country: String):Names{
+        return if(country == "Random" || country == "") {
+            importCountry(countryList.random())
+        } else {
+            return importCountry(country)
+        }
+
     }
 
     private fun parseOccupation(occupation: String): String {
