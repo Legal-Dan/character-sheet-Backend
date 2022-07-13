@@ -8,14 +8,17 @@ class Names(region:String, male:List<String>, female:List<String>, surnames:List
 
     fun randomName(gender:String):String{
         return when(region) {
-        "Kent" -> angloSaxonName(gender)
-        "East Anglia" -> angloSaxonName(gender)
-        "Essex" -> angloSaxonName(gender)
-        "Mercia" -> angloSaxonName(gender)
-        "Northumbria" -> angloSaxonName(gender)
-        "Sussex" -> angloSaxonName(gender)
-        "Wessex" -> angloSaxonName(gender)
-        else -> forenameFirst(gender)
+            "Kent", "East Anglia", "Essex", "Mercia", "Northumbria", "Sussex", "Wessex" -> angloSaxonName(gender)
+            "Britons", "Burgundy", "Franks", "German Empire" -> forenameOnly(gender)
+            else -> forenameFirst(gender)
+        }
+    }
+
+    private fun forenameOnly(gender: String): String {
+        return when (gender){
+            "male" -> "${male.random()}"
+            "female" -> "${female.random()}"
+            else -> listOf("${male.random()}", "${female.random()}").random()
         }
     }
 
