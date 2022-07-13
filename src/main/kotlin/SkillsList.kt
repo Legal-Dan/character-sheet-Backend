@@ -290,17 +290,10 @@ val skills = mapOf<String, Skills>(
     ),
     "languageOther" to Skills(
         displayName = "Language: Other",
-        era = listOf<String>("gaslight", "classic", "modern"),
+        era = listOf<String>("darkAge","gaslight", "classic", "modern"),
         value = 1,
         rarity = "Common",
-        variety = mutableMapOf<String,Int>()
-    ),
-    "languageOtherDarkAge" to Skills(
-        displayName = "Language: Other",
-        era = listOf<String>("darkAge"),
-        value = 1,
-        rarity = "Common",
-        variety = mutableMapOf("Latin" to 1, "Welsh" to 1, "Norman" to 1, "Norse" to 1)
+        variety = mutableMapOf<String,Int>("Latin" to 1)
     ),
     "law" to Skills(
         displayName = "Law",

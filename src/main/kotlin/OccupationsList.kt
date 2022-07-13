@@ -74,7 +74,7 @@ val occupations = mapOf(
     "Cleric" to Occupations(
         displayName = "Cleric",
         era = listOf("darkAge"),
-        careerSkills = listOf("status", "charm", "libraryUseDarkAge", "persuadeDarkAge", "languageOtherDarkAge-Latin", "ownKingdom", "religion", "random",
+        careerSkills = listOf("status", "charm", "libraryUseDarkAge", "persuadeDarkAge", "languageOther-Latin", "ownKingdom", "religion", "random",
             oneOf(listOf("readAndWrite-Latin", "readAndWrite-Own"))),
         creditRatingLow = 9,
         creditRatingHigh = 99,
