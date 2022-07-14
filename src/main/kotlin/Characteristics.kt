@@ -68,7 +68,7 @@ class Characteristics(statsGeneration:String, highestValue:String) {
 
     fun assignStandardCharacteristics(highestValue: String): MutableMap<String, Characteristic> {
         val assignedCharacteristicsWorking: MutableMap<String, Characteristic>
-        if (highestValue != "none") {
+        if (highestValue != "") {
             assignedCharacteristicsWorking = mutableMapOf(highestValue to createCharacteristic(highestValue, 70))
         }
         else{
