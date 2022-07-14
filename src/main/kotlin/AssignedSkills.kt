@@ -1,3 +1,4 @@
+import main.countryList
 import main.languageList
 import java.util.*
 
@@ -25,6 +26,13 @@ class AssignedSkills(
         for (language in languageList){
             if (language != assignLanguage){
                 characterSkills["languageOther"]!!.variety?.plusAssign(language to 1)
+            }
+        }
+        if(era == "darkAge"){
+            for (kingdom in countryList){
+                if (kingdom != country.region){
+                    characterSkills["otherKingdom"]!!.variety?.plusAssign(kingdom to 20)
+                }
             }
         }
         return characterSkills

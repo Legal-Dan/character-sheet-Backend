@@ -387,14 +387,14 @@ val skills = mapOf<String, Skills>(
         variety = null
     ),
     "otherKingdom" to Skills(
-        displayName = "Other Kigdom",
+        displayName = "Other Kingdom",
         era = listOf<String>("darkAge"),
         value = 20,
         rarity = "Common",
-        variety = mutableMapOf("Wessex" to 20, "Kent" to 20, "Essex" to 20, "Mercia" to 20, "Northumbria" to 20, "Sussex" to 20, "East Anglia" to 20, )
+        variety = mutableMapOf()
     ),
     "ownKingdom" to Skills(
-        displayName = "Own Kigdom",
+        displayName = "Own Kingdom",
         era = listOf<String>("darkAge"),
         value = 20,
         rarity = "Common",
