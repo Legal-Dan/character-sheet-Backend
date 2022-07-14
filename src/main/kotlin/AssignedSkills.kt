@@ -115,8 +115,9 @@ class AssignedSkills(
         val skillObject = characterSkills[skill] ?: throw error("skillConstructor says that $skill is not a skill!")
         val skillObjectVarietyList = skillObject.variety ?: throw error("skillConstructor says that $skill does not have a variety!")
         val skillObjectVariety = skillObjectVarietyList[variety] ?: throw error("skillConstructor says that $variety is not in the $skill list!")
+        val displayNameAltered = removeOther(skillObject.displayName)
         characterSkills += newSkill to Skills(
-            displayName = newSkill.replaceFirstChar { it.titlecase() },
+            displayName = "$displayNameAltered: $variety",
             era = skillObject.era,
             value = skillObjectVariety,
             rarity = skillObject.rarity,
@@ -124,6 +125,12 @@ class AssignedSkills(
         )
         characterSkills[skill]?.variety?.remove(variety)
         return newSkill
+    }
+
+    private fun removeOther(displayName: String): String {
+        return if (displayName.contains(": Other")){
+            displayName.replace(": Other", "")
+        } else displayName
     }
 
     private fun assignCharacterSkills(tempSkills: List<String>): List<String> {
