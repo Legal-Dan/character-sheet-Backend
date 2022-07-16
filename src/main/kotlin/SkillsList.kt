@@ -96,7 +96,7 @@ val skills = mapOf<String, Skills>(
         displayName = "Computer Use",
         era = listOf<String>("modern"),
         value = 5,
-        rarity = "Common",
+        rarity = "Very Common",
         variety = null
     ),
     "creditRating" to Skills(

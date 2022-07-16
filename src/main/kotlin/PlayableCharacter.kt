@@ -11,15 +11,12 @@ class PlayableCharacter(
     val era = era
     val occupation = occupation
     val age = age
-    val country = country
     val skills = SkillsList().skills
-    val statsGeneration = statsGeneration
-    val highestValue = highestValue
-    val characteristics = Characteristics(statsGeneration, highestValue)
+    val characteristics = Characteristics(statsGeneration, highestValue, age).updatedCharacteristic
     val eraSkills = skillsByEra()
     val occupations = OccupationsList().occupations
     val characterOccupation = occupations[occupation]
-    val characterSkills = AssignedSkills(eraSkills, characterOccupation!!, era, characteristics.assignedCharacteristic, country)
+    val characterSkills = AssignedSkills(eraSkills, characterOccupation!!, era, characteristics, country)
 
     private fun skillsByEra(): MutableMap<String, Skills> {
         val temp = mutableMapOf<String, Skills>()

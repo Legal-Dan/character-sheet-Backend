@@ -69,12 +69,15 @@ class AssignedSkills(
     }
 
     private fun assignInterests() {
-        var interestPoints = (characteristics["intelligence"]!!.value)*2
+        var interestPoints = characteristics["intelligence"]!!.value*2
         while (interestPoints > 0){
             val tempPoints = (1..6).random()*5
-            if(tempPoints <= interestPoints){
-                assignValue(randomSkillList().random(), tempPoints, "addition")
-                interestPoints -= tempPoints
+            when{
+                interestPoints >= tempPoints -> {
+                    assignValue(randomSkillList().random(), tempPoints, "addition")
+                    interestPoints -= tempPoints
+                }
+                interestPoints in 1..4 -> interestPoints = 5
             }
         }
     }

@@ -94,7 +94,7 @@ class MessageResource() {
         val returnAge = generatedCharacter.age
         val returnOccupation = generatedCharacter.occupation
         val returnRegion = generatedCountry.region
-        val flatStats = generatedCharacter.characteristics.assignedCharacteristic
+        val flatStats = generatedCharacter.characteristics
         var returnStats = ""
         var returnSkills = ""
         for (stat in flatStats){
