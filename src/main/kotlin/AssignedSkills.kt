@@ -3,19 +3,13 @@ import main.languageList
 import java.util.*
 
 class AssignedSkills(
-    characterSkills: MutableMap<String, Skills>,
-    occupation:Occupations,
-    era:String,
-    characteristics: MutableMap<String, Characteristic>,
-    country: Names
+    private val characterSkills: MutableMap<String, Skills>,
+    private val occupation: Occupations,
+    private val era: String,
+    private val characteristics: MutableMap<String, Characteristic>,
+    private val country: Names
 ) {
-    val occupation = occupation
-    val era = era
-    val country = country
-    val characteristics = characteristics
-    val characterSkills = characterSkills
-    val careerSkills = assignCharacterSkills(occupation.careerSkills)
-
+    private val careerSkills = assignCharacterSkills(occupation.careerSkills)
     val assignedCharacterSkills = assign(careerSkills)
 
     private fun updateCharacteristicSkills(characterSkills: MutableMap<String, Skills>): MutableMap<String, Skills> {
@@ -82,17 +76,14 @@ class AssignedSkills(
         }
     }
 
-    private fun assignValue(skill:String, skillValue:Int, function:String): Skills? {
+    private fun assignValue(skill:String, skillValue:Int, function:String): Skills {
         val skillObject = characterSkills[skillParser(skill)] ?: throw error("assignValue says that $skill is not a skill!")
-        if (skillValue == null) throw error("assignValue says that that's not a skill value!")
-        else{
-            return if(function == "replace"){
-                skillObject.value = skillValue
-                skillObject
-            } else{
-                skillObject.value += skillValue
-                skillObject
-            }
+        return if(function == "replace"){
+            skillObject.value = skillValue
+            skillObject
+        } else{
+            skillObject.value += skillValue
+            skillObject
         }
     }
 
@@ -152,7 +143,7 @@ class AssignedSkills(
         return toReturn
     }
 
-    fun randomSkillList(): MutableList<String> {
+    private fun randomSkillList(): MutableList<String> {
         val temp = mutableListOf<String>()
         for (currentSkill in characterSkills){
             when (currentSkill.value.rarity) {

@@ -1,4 +1,4 @@
-import main.names
+import main.CountriesData
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.selectAll
@@ -11,16 +11,16 @@ fun importCountry(toFind: String): Names {
         driver = "com.mysql.cj.jdbc.Driver",
         user = "root",
         password = "rootroot")) {
-        SchemaUtils.create(names)
+        SchemaUtils.create(CountriesData)
 
-        names.selectAll().forEach {
-            if (it[names.region] == (toFind)) {
+        CountriesData.selectAll().forEach {
+            if (it[CountriesData.region] == (toFind)) {
                 data += mutableListOf(
-                    it[names.region],
-                    it[names.male],
-                    it[names.female],
-                    it[names.surnames],
-                    it[names.languages]
+                    it[CountriesData.region],
+                    it[CountriesData.male],
+                    it[CountriesData.female],
+                    it[CountriesData.surnames],
+                    it[CountriesData.languages]
                 )
             }
         }
@@ -30,18 +30,18 @@ fun importCountry(toFind: String): Names {
 }
 
 fun generateCountryList(eraToFind: String): List<MutableList<String>> {
-    val data = listOf(mutableListOf<String>(), mutableListOf<String>())
+    val data = listOf(mutableListOf(), mutableListOf<String>())
     transaction(
         Database.connect(url = "jdbc:mysql://localhost:3306/mysql",
         driver = "com.mysql.cj.jdbc.Driver",
         user = "root",
         password = "rootroot")) {
-        SchemaUtils.create(names)
+        SchemaUtils.create(CountriesData)
 
-        names.selectAll().forEach {
-            if (it[names.periods].contains(eraToFind)) {
-                data[0] += it[names.region]
-                for (language in it[names.languages].split(",")){
+        CountriesData.selectAll().forEach {
+            if (it[CountriesData.periods].contains(eraToFind)) {
+                data[0] += it[CountriesData.region]
+                for (language in it[CountriesData.languages].split(",")){
                     if (!data[1].contains(language)) data[1] += language
                 }
             }

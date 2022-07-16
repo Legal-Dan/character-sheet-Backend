@@ -1,7 +1,2 @@
-class Skills(displayName:String, era:List<String>, value:Int, rarity:String, variety:MutableMap<String, Int>?) {
-    var displayName = displayName
-    var era = era
-    var value = value
-    val rarity = rarity
-    var variety = variety
-}
+class Skills(var displayName: String, var era: List<String>, var value: Int, val rarity: String,
+             var variety: MutableMap<String, Int>?)

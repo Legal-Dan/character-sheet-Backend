@@ -1,10 +1,6 @@
-class Names(region:String, male:List<String>, female:List<String>, surnames:List<String>, languages:List<String>) {
-
-    val region = region
-    val male = male
-    val female = female
-    val surnames = surnames
-    val languages = languages
+class Names(val region: String, private val male: List<String>, private val female: List<String>, private val surnames: List<String>,
+            val languages: List<String>
+) {
 
     fun randomName(gender:String):String{
         return when(region) {
@@ -16,9 +12,9 @@ class Names(region:String, male:List<String>, female:List<String>, surnames:List
 
     private fun forenameOnly(gender: String): String {
         return when (gender){
-            "male" -> "${male.random()}"
-            "female" -> "${female.random()}"
-            else -> listOf("${male.random()}", "${female.random()}").random()
+            "male" -> male.random()
+            "female" -> female.random()
+            else -> listOf(male.random(), female.random()).random()
         }
     }
 

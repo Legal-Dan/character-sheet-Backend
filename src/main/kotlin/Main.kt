@@ -21,7 +21,7 @@ var occupationList = listOf<String>()
 @SpringBootApplication
 class CharacterSheet
 
-object names: org.jetbrains.exposed.sql.Table(){
+object CountriesData: org.jetbrains.exposed.sql.Table(){
     val region = varchar("region", 100)
     val male = varchar("male", 5000)
     val female = varchar("female", 5000)
@@ -35,23 +35,23 @@ fun main(args: Array<String>) {
 }
 
 @RestController
-class MessageResource() {
-    @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
+class MessageResource {
+    @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
     @PostMapping("/getOccupations")
     fun get(@RequestBody title: String): List<String> {
         val era = title.subSequence(10, title.length-2).toString()
         occupationList = filterByEra(OccupationsList().occupations, era)
-        return occupationList;
+        return occupationList
     }
 
-    @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
+    @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
     @PostMapping("/getRegions")
     fun getRegions(@RequestBody title: String): List<String> {
         val era = title.subSequence(10, title.length-2).toString()
         val data = generateCountryList(era)
         countryList = data[0]
         languageList = data[1]
-        return listOf("Random") + countryList;
+        return listOf("Random") + countryList
     }
 
     private fun filterByEra(occupations: Map<String, Occupations>, era: String): List<String> {
@@ -64,7 +64,7 @@ class MessageResource() {
         return toReturn
     }
 
-    @CrossOrigin(origins = arrayOf("http://localhost:8080", "http://localhost:3000"))
+    @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
     @PostMapping("/getUsers")
     fun post(@RequestBody message: String): String {
         data class Character(
@@ -126,7 +126,7 @@ class MessageResource() {
         return if (charName == "") {
             var updatedGender = gender
             if (gender == "Random") updatedGender = listOf("male", "female").random()
-            generatedCountry?.randomName(updatedGender)
+            generatedCountry.randomName(updatedGender)
         } else {
             return charName
         }
