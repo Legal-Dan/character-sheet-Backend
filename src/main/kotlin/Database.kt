@@ -4,7 +4,7 @@ import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
-fun importCountry(toFind: String): Names {
+fun importCountry(toFind: String): Country {
     val data = mutableListOf<String>()
     transaction(
         Database.connect(url = "jdbc:mysql://localhost:3306/mysql",
@@ -26,7 +26,7 @@ fun importCountry(toFind: String): Names {
         }
     }
     val delim = ","
-    return Names(data[0], data[1].split(delim), data[2].split(delim), data[3].split(delim), data[4].split(delim))
+    return Country(data[0], data[1].split(delim), data[2].split(delim), data[3].split(delim), data[4].split(delim))
 }
 
 fun generateCountryList(eraToFind: String): List<MutableList<String>> {

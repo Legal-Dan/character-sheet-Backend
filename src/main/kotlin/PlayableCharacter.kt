@@ -1,7 +1,7 @@
 class PlayableCharacter(
     val name: String,
     private val era: String,
-    country: Names,
+    country: Country,
     val occupation: String,
     val age: Int,
     statsGeneration: String,
@@ -9,7 +9,7 @@ class PlayableCharacter(
 ) {
     private val skills = SkillsList().skills
     val characteristics = Characteristics(statsGeneration, highestValue, age).updatedCharacteristic
-    private val eraSkills = skillsByEra()
+    val eraSkills = skillsByEra()
     private val occupations = OccupationsList().occupations
     private val characterOccupation = occupations[occupation]
     val characterSkills = AssignedSkills(eraSkills, characterOccupation!!, era, characteristics, country)

@@ -1,7 +1,6 @@
-class Names(val region: String, private val male: List<String>, private val female: List<String>, private val surnames: List<String>,
-            val languages: List<String>
+class Country(val region: String, private val male: List<String>, private val female: List<String>, private val surnames: List<String>,
+              val languages: List<String>
 ) {
-
     fun randomName(gender:String):String{
         return when(region) {
             "Kent", "East Anglia", "Essex", "Mercia", "Northumbria", "Sussex", "Wessex" -> angloSaxonName(gender)

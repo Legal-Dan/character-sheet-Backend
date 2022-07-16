@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Test
 
 class PlayableCharacterTest{
-    val testCountry = Names("CountryName", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"))
+    val testCountry = Country("CountryName", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"))
 
 
     @Test
@@ -56,5 +56,21 @@ class PlayableCharacterTest{
         }
         totalValue -= characteristics["luck"]!!.value
         assert(totalValue != 70+60+60+50+50+50+40+40)
+    }
+
+    @Test
+    fun `can generate a set of period appropriate skills`() {
+        val eraSkills = PlayableCharacter(
+            "test",
+            "classic",
+            testCountry,
+            "Archaeologist",
+            20,
+            "roll",
+            ""
+        ).eraSkills
+        for (skill in eraSkills) {
+            assert(skill.value.era.contains("classic"))
+        }
     }
 }

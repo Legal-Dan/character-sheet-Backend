@@ -1,6 +1,6 @@
 package main
 
-import Names
+import Country
 import Occupations
 import OccupationsList
 import PlayableCharacter
@@ -122,7 +122,7 @@ class MessageResource {
         }
     }
 
-    private fun nameGenerator(charName: String, gender: String, generatedCountry: Names): String {
+    private fun nameGenerator(charName: String, gender: String, generatedCountry: Country): String {
         return if (charName == "") {
             var updatedGender = gender
             if (gender == "Random") updatedGender = listOf("male", "female").random()
@@ -132,7 +132,7 @@ class MessageResource {
         }
     }
 
-    private fun countryGenerator(country: String):Names{
+    private fun countryGenerator(country: String):Country{
         return if(country == "Random" || country == "") {
             importCountry(countryList.random())
         } else {

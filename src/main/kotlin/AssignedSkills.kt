@@ -7,7 +7,7 @@ class AssignedSkills(
     private val occupation: Occupations,
     private val era: String,
     private val characteristics: MutableMap<String, Characteristic>,
-    private val country: Names
+    private val country: Country
 ) {
     private val careerSkills = assignCharacterSkills(occupation.careerSkills)
     val assignedCharacterSkills = assign(careerSkills)
