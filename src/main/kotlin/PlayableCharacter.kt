@@ -1,3 +1,5 @@
+import Database.importSkills
+
 class PlayableCharacter(
     val name: String,
     private val era: String,
@@ -7,7 +9,7 @@ class PlayableCharacter(
     statsGeneration: String,
     highestValue: String,
 ) {
-    private val skills = SkillsList().skills
+    private val skills = importSkills(era)
     val characteristics = Characteristics(statsGeneration, highestValue, age).updatedCharacteristic
     val eraSkills = skillsByEra()
     private val characterOccupation = importOccupations(occupation, era)
