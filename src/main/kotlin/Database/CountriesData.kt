@@ -1,8 +1,16 @@
-import main.CountriesData
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
+
+object CountriesData: org.jetbrains.exposed.sql.Table(){
+    val region = varchar("region", 100)
+    val male = varchar("male", 5000)
+    val female = varchar("female", 5000)
+    val surnames = varchar("surnames", 5000)
+    val languages = varchar("languages", 100)
+    val periods = varchar("periods", 100)
+}
 
 fun importCountry(toFind: String): Country {
     val data = mutableListOf<String>()

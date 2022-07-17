@@ -1,11 +1,10 @@
 package main
 
 import Country
-import Occupations
-import OccupationsList
 import PlayableCharacter
 import com.beust.klaxon.Klaxon
 import generateCountryList
+import generateOccupationList
 import importCountry
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -21,15 +20,6 @@ var occupationList = listOf<String>()
 @SpringBootApplication
 class CharacterSheet
 
-object CountriesData: org.jetbrains.exposed.sql.Table(){
-    val region = varchar("region", 100)
-    val male = varchar("male", 5000)
-    val female = varchar("female", 5000)
-    val surnames = varchar("surnames", 5000)
-    val languages = varchar("languages", 100)
-    val periods = varchar("periods", 100)
-}
-
 fun main(args: Array<String>) {
     runApplication<CharacterSheet>(*args)
 }
@@ -40,7 +30,7 @@ class MessageResource {
     @PostMapping("/getOccupations")
     fun get(@RequestBody title: String): List<String> {
         val era = title.subSequence(10, title.length-2).toString()
-        occupationList = filterByEra(OccupationsList().occupations, era)
+        occupationList = generateOccupationList(era)
         return occupationList
     }
 
@@ -52,16 +42,6 @@ class MessageResource {
         countryList = data[0]
         languageList = data[1]
         return listOf("Random") + countryList
-    }
-
-    private fun filterByEra(occupations: Map<String, Occupations>, era: String): List<String> {
-        var toReturn = listOf("Random")
-        for (occupation in occupations){
-            if (occupation.value.era.contains(era)){
-                toReturn = toReturn + occupation.key
-            }
-        }
-        return toReturn
     }
 
     @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
