@@ -13,10 +13,10 @@ class AssignedSkills(
     val assignedCharacterSkills = assign(careerSkills)
 
     private fun updateCharacteristicSkills(characterSkills: MutableMap<String, Skills>): MutableMap<String, Skills> {
-        characterSkills["dodge"]!!.value = characteristics["dexterity"]!!.value/2
+        characterSkills["dodge"]!!.initialValue = characteristics["dexterity"]!!.value/2
         val assignLanguage = country.languages.random()
         characterSkills["languageOwn"]!!.displayName = "Language: $assignLanguage"
-        characterSkills["languageOwn"]!!.value = characteristics["education"]!!.value
+        characterSkills["languageOwn"]!!.initialValue = characteristics["education"]!!.value
         for (language in languageList){
             if (language != assignLanguage){
                 characterSkills["languageOther"]!!.variety?.plusAssign(language to 1)
@@ -79,10 +79,10 @@ class AssignedSkills(
     private fun assignValue(skill:String, skillValue:Int, function:String): Skills {
         val skillObject = characterSkills[skillParser(skill)] ?: throw error("assignValue says that $skill is not a skill!")
         return if(function == "replace"){
-            skillObject.value = skillValue
+            skillObject.initialValue = skillValue
             skillObject
         } else{
-            skillObject.value += skillValue
+            skillObject.initialValue += skillValue
             skillObject
         }
     }
@@ -113,7 +113,7 @@ class AssignedSkills(
         characterSkills += newSkill to Skills(
             displayName = "$displayNameAltered: $variety",
             era = skillObject.era,
-            value = skillObjectVariety,
+            initialValue = skillObjectVariety,
             rarity = skillObject.rarity,
             variety = null
         )

@@ -1,6 +1,3 @@
-package Database
-
-import Skills
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.selectAll
@@ -43,7 +40,7 @@ fun importSkills(eraToFind: String): Map<String, Skills> {
 }
 
 fun assignVariety(varietyString: String): MutableMap<String, Int>? {
-    if (varietyString.isNullOrBlank()) return null
+    if (varietyString.isBlank()) return null
     val varietyList = varietyString.split(",")
     val toReturn = mutableMapOf<String, Int>()
     for (variety in varietyList){

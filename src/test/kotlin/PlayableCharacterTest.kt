@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Test
 
 class PlayableCharacterTest{
-    val testCountry = Country("CountryName", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"))
+    private val testCountry = Country("CountryName", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"))
 
 
     @Test

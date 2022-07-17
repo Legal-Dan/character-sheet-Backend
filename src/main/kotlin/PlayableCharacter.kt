@@ -1,4 +1,5 @@
-import Database.importSkills
+import importOccupations
+import importSkills
 
 class PlayableCharacter(
     val name: String,

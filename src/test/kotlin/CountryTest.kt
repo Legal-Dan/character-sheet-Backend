@@ -1,9 +1,9 @@
 import org.junit.jupiter.api.Test
 
 class CountryTest{
-    val testCountry = Country("CountryName", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"))
-    val saxonCountry = Country("Kent", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"))
-    val forenameCountry = Country("Franks", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"))
+    private val testCountry = Country("CountryName", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"))
+    private val saxonCountry = Country("Kent", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"))
+    private val forenameCountry = Country("Franks", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"))
 
     @Test
     fun `can generate a random name, forename first`() {

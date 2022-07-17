@@ -82,7 +82,7 @@ class MessageResource {
         }
 
         for (skill in generatedCharacter.characterSkills.assignedCharacterSkills){
-            returnSkills += ", " + skill.value.displayName + ": " + skill.value.value
+            returnSkills += ", " + skill.value.displayName + ": " + skill.value.initialValue
         }
 
         val toReturn =

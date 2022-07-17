@@ -19,7 +19,7 @@ fun importOccupations(toFind: String, eraToFind: String): Occupations {
         driver = "com.mysql.cj.jdbc.Driver",
         user = "root",
         password = "rootroot")) {
-        SchemaUtils.create(CountriesData)
+        SchemaUtils.create(OccupationsData)
 
         OccupationsData.selectAll().forEach {
             if (it[OccupationsData.displayName] == toFind && eraToFind in it[OccupationsData.era]) {
@@ -35,7 +35,14 @@ fun importOccupations(toFind: String, eraToFind: String): Occupations {
         }
     }
     val delim = ","
-    return Occupations(data[0], data[1].split(delim), splitSkills(data[2]), data[3].toInt(), data[4].toInt(), data[5].split(delim))
+    return Occupations(
+        data[0],
+        data[1].split(delim),
+        splitSkills(data[2]),
+        data[3].toInt(),
+        data[4].toInt(),
+        data[5].split(delim)
+    )
 }
 
 fun splitSkills(skillString: String): List<String> {
@@ -58,7 +65,7 @@ fun oneOf(skillList: String): String {
 fun multipleOf(skillList: String): MutableList<String> {
     val splitList = skillList.split(":")
     val number = splitList[1].toInt()
-    val remainingOptions = splitList[0].split("/").toMutableList()
+    val remainingOptions = splitList[0].replace("multipleOf", "").split("/").toMutableList()
 
     val toReturn = mutableListOf<String>()
     while(toReturn.size < number){
