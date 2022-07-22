@@ -16,9 +16,9 @@ fun importOccupations(toFind: String, eraToFind: String): Occupations {
     val data = mutableListOf<String>()
     transaction(
         Database.connect(url = "jdbc:mysql://localhost:3306/mysql",
-        driver = "com.mysql.cj.jdbc.Driver",
-        user = "root",
-        password = "rootroot")) {
+            driver = "com.mysql.cj.jdbc.Driver",
+            user = "root",
+            password = "rootroot")) {
         SchemaUtils.create(OccupationsData)
 
         OccupationsData.selectAll().forEach {
@@ -79,9 +79,9 @@ fun generateOccupationList(eraToFind: String): List<String> {
     val data = mutableListOf("Random")
     transaction(
         Database.connect(url = "jdbc:mysql://localhost:3306/mysql",
-        driver = "com.mysql.cj.jdbc.Driver",
-        user = "root",
-        password = "rootroot")) {
+            driver = "com.mysql.cj.jdbc.Driver",
+            user = "root",
+            password = "rootroot")) {
         SchemaUtils.create(OccupationsData)
 
         OccupationsData.selectAll().forEach {

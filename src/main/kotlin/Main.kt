@@ -1,11 +1,10 @@
 package main
 
-import Country
+import Generators
 import PlayableCharacter
 import com.beust.klaxon.Klaxon
 import generateCountryList
 import generateOccupationList
-import importCountry
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.web.bind.annotation.PostMapping
@@ -58,15 +57,16 @@ class MessageResource {
             val highestValue: String
         )
 
+        val generators = Generators()
         val result = Klaxon()
             .parse<Character>(message) ?: throw error("No details found!")
-        val generatedCountry = countryGenerator(result.region)
+        val generatedCountry = generators.countryGenerator(result.region)
         val generatedCharacter = PlayableCharacter(
-            nameGenerator(result.charName, result.gender, generatedCountry),
+            generators.nameGenerator(result.charName, result.gender, generatedCountry),
             result.era,
             generatedCountry,
-            parseOccupation(result.occupation),
-            ageGenerator(result.age),
+            generators.parseOccupation(result.occupation),
+            generators.ageGenerator(result.age),
             result.statsGeneration,
             result.highestValue
         )
@@ -92,40 +92,5 @@ class MessageResource {
 
         val toReturnJson = ReturnString(toReturn)
         return Klaxon().toJsonString(toReturnJson)
-    }
-
-    private fun ageGenerator(charAge: String): Int {
-        return if (charAge == "") {
-            (18..80).random()
-        } else {
-            charAge.toInt()
-        }
-    }
-
-    private fun nameGenerator(charName: String, gender: String, generatedCountry: Country): String {
-        return if (charName == "") {
-            var updatedGender = gender
-            if (gender == "Random") updatedGender = listOf("male", "female").random()
-            generatedCountry.randomName(updatedGender)
-        } else {
-            return charName
-        }
-    }
-
-    private fun countryGenerator(country: String):Country{
-        return if(country == "Random" || country == "") {
-            importCountry(countryList.random())
-        } else {
-            return importCountry(country)
-        }
-
-    }
-
-    private fun parseOccupation(occupation: String): String {
-        return if (occupationList.contains(occupation)) {
-            occupation
-        } else {
-            occupationList[(1 until occupationList.size).random()]
-        }
     }
 }

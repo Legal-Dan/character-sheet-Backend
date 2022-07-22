@@ -1,3 +1,4 @@
+
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.selectAll
@@ -17,9 +18,9 @@ fun importSkills(eraToFind: String): Map<String, Skills> {
     val delim = ","
     transaction(
         Database.connect(url = "jdbc:mysql://localhost:3306/mysql",
-        driver = "com.mysql.cj.jdbc.Driver",
-        user = "root",
-        password = "rootroot")) {
+            driver = "com.mysql.cj.jdbc.Driver",
+            user = "root",
+            password = "rootroot")) {
         SchemaUtils.create(SkillsData)
 
         SkillsData.selectAll().forEach {
