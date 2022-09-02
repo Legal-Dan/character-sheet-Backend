@@ -1,6 +1,4 @@
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object OccupationsData: org.jetbrains.exposed.sql.Table(){
@@ -58,7 +56,7 @@ fun oneOf(skillList: String): String {
 fun multipleOf(skillList: String): MutableList<String> {
     val splitList = skillList.split(":")
     val number = splitList[1].toInt()
-    val remainingOptions = splitList[0].split("/").toMutableList()
+    val remainingOptions = splitList[0].replace("multipleOf", "").split("/").toMutableList()
 
     val toReturn = mutableListOf<String>()
     while(toReturn.size < number){
@@ -72,9 +70,9 @@ fun generateOccupationList(eraToFind: String): List<String> {
     val data = mutableListOf("Random")
     transaction(
         Database.connect(url = "jdbc:mysql://localhost:3306/mysql",
-        driver = "com.mysql.cj.jdbc.Driver",
-        user = "root",
-        password = "rootroot")) {
+            driver = "com.mysql.cj.jdbc.Driver",
+            user = "root",
+            password = "rootroot")) {
         SchemaUtils.create(OccupationsData)
 
         OccupationsData.selectAll().forEach {

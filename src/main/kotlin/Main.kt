@@ -70,23 +70,19 @@ class MessageResource {
             result.statsGeneration,
             result.highestValue
         )
-        val returnName = generatedCharacter.name
-        val returnAge = generatedCharacter.age
-        val returnOccupation = generatedCharacter.occupation
-        val returnRegion = generatedCountry.region
         val flatStats = generatedCharacter.characteristics
         var returnStats = ""
         var returnSkills = ""
         for (stat in flatStats){
-            returnStats += ", " + stat.value.name + ": " + stat.value.value
+            returnStats += ", " + stat.value.name + ">" + stat.value.value
         }
 
         for (skill in generatedCharacter.characterSkills.assignedCharacterSkills){
-            returnSkills += ", " + skill.value.displayName + ": " + skill.value.initialValue
+            returnSkills += ", " + skill.value.displayName + ">" + skill.value.initialValue
         }
 
         val toReturn =
-            "$returnName is a $returnAge year old $returnOccupation from $returnRegion with base characteristics of$returnStats. Current skills are set to$returnSkills."
+            "${generatedCharacter.name}|${generatedCharacter.age}|${generatedCharacter.occupation}|${generatedCountry.region}|$returnStats|$returnSkills"
 
         class ReturnString(val text: String)
 

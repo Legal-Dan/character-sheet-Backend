@@ -34,7 +34,7 @@ class Generators {
         return if (occupationList.contains(occupation)) {
             occupation
         } else {
-            occupationList[(1 until occupationList.size).random()]
+            occupationList[(occupationList.indices).random()]
         }
     }
 }
