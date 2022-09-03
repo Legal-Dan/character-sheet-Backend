@@ -1,6 +1,8 @@
 package main
 
+import AssignedSkills
 import Generators
+import OccupationsData.careerSkills
 import PlayableCharacter
 import com.beust.klaxon.Klaxon
 import generateCountryList
@@ -78,7 +80,11 @@ class MessageResource {
         }
 
         for (skill in generatedCharacter.characterSkills.assignedCharacterSkills){
+            if (skill.value.rarity != "Uncommon" ||
+                generatedCharacter.characterSkills.careerSkills.contains(skill.key) ||
+                generatedCharacter.characterSkills.assignedInterestSkills.contains(skill.key)){
             returnSkills += ", " + skill.value.displayName + ">" + skill.value.initialValue
+            }
         }
 
         val toReturn =

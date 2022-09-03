@@ -9,8 +9,9 @@ class AssignedSkills(
     private val characteristics: MutableMap<String, Characteristic>,
     private val country: Country
 ) {
-    private val careerSkills = assignCharacterSkills(occupation.careerSkills)
+    val careerSkills = assignCharacterSkills(occupation.careerSkills)
     val assignedCharacterSkills = assign(careerSkills)
+    val assignedInterestSkills = assignInterests()
 
     private fun updateCharacteristicSkills(characterSkills: MutableMap<String, Skills>): MutableMap<String, Skills> {
         characterSkills["dodge"]!!.initialValue = characteristics["dexterity"]!!.value/2
@@ -58,22 +59,24 @@ class AssignedSkills(
                 standardArray.remove(temp)
             }
         }
-        assignInterests()
         return characterSkills
     }
 
-    private fun assignInterests() {
+    private fun assignInterests(): List<String> {
         var interestPoints = characteristics["intelligence"]!!.value*2
+        val assignedSkills = mutableListOf<String>()
         while (interestPoints > 0){
             val tempPoints = (1..6).random()*5
             when{
                 interestPoints >= tempPoints -> {
-                    assignValue(randomSkillList().random(), tempPoints, "addition")
+                    assignedSkills.add(randomSkillList().random())
+                    assignValue(assignedSkills.last(), tempPoints, "addition")
                     interestPoints -= tempPoints
                 }
                 interestPoints in 1..4 -> interestPoints = 5
             }
         }
+        return assignedSkills
     }
 
     private fun assignValue(skill:String, skillValue:Int, function:String): Skills {
