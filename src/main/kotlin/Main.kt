@@ -1,8 +1,6 @@
 package main
 
-import AssignedSkills
 import Generators
-import OccupationsData.careerSkills
 import PlayableCharacter
 import com.beust.klaxon.Klaxon
 import generateCountryList
@@ -72,27 +70,40 @@ class MessageResource {
             result.statsGeneration,
             result.highestValue
         )
-        val flatStats = generatedCharacter.characteristics
-        var returnStats = ""
-        var returnSkills = ""
-        for (stat in flatStats){
-            returnStats += ", " + stat.value.name + ">" + stat.value.value
-        }
-
-        for (skill in generatedCharacter.characterSkills.assignedCharacterSkills){
-            if (skill.value.rarity != "Uncommon" ||
-                generatedCharacter.characterSkills.careerSkills.contains(skill.key) ||
-                generatedCharacter.characterSkills.assignedInterestSkills.contains(skill.key)){
-            returnSkills += ", " + skill.value.displayName + ">" + skill.value.initialValue
-            }
-        }
-
         val toReturn =
-            "${generatedCharacter.name}|${generatedCharacter.age}|${generatedCharacter.occupation}|${generatedCountry.region}|$returnStats|$returnSkills"
+            "${generatedCharacter.name}|" +
+                    "${generatedCharacter.age}|" +
+                    "${generatedCharacter.occupation}|" +
+                    "${generatedCountry.region}|" +
+                    "${sortStats(generatedCharacter)}|" +
+                    sortSkills(generatedCharacter)
 
         class ReturnString(val text: String)
 
         val toReturnJson = ReturnString(toReturn)
         return Klaxon().toJsonString(toReturnJson)
+    }
+
+    private fun sortSkills(generatedCharacter: PlayableCharacter): String {
+        var returnSkills = ""
+        val sortedList = generatedCharacter.characterSkills.assignedCharacterSkills.toSortedMap()
+        for (skill in sortedList) {
+            if (skill.value.rarity != "Uncommon" ||
+                generatedCharacter.characterSkills.careerSkills.contains(skill.key) ||
+                generatedCharacter.characterSkills.assignedInterestSkills.contains(skill.key)
+            ) {
+                returnSkills += ", " + skill.value.displayName + ">" + skill.value.initialValue
+            }
+        }
+        return returnSkills
+    }
+
+    private fun sortStats(generatedCharacter: PlayableCharacter): String {
+        val flatStats = generatedCharacter.characteristics
+        var returnStats = ""
+        for (stat in flatStats){
+            returnStats += ", " + stat.value.name + ">" + stat.value.value
+        }
+        return returnStats
     }
 }
