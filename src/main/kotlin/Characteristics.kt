@@ -131,9 +131,14 @@ class Characteristics(statsGeneration: String, highestValue: String, private val
 
     private fun improveEdu(numberOfTimes: Int) {
         repeat(numberOfTimes){
-            if ((1..100).random() <= baseCharacteristic["intelligence"]!!.value){
-                val updatedValue = baseCharacteristic["intelligence"]!!.value + (1..10).random()
-                updateCharacteristic(baseCharacteristic["intelligence"]!!, updatedValue)
+            if ((1..100).random() <= baseCharacteristic["education"]!!.value){
+                var updatedValue = baseCharacteristic["education"]!!.value + (1..10).random()
+                if (updatedValue >= 100){
+                    val excessToIntelligence = baseCharacteristic["intelligence"]!!.value + updatedValue - 99
+                    updatedValue = 99
+                    updateCharacteristic(baseCharacteristic["intelligence"]!!, excessToIntelligence)
+                }
+                updateCharacteristic(baseCharacteristic["education"]!!, updatedValue)
             }
         }
     }
