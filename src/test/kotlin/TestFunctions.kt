@@ -2,7 +2,7 @@ class TestFunctions {
     fun characterSkills(era: String): MutableMap<String, Skills> {
         return mutableMapOf(
         "dodge" to Skills("Dodge", listOf(era), 0, "Common", null),
-        "languageOwn" to Skills("languageown", listOf(era), 0, "Common", null),
+        "languageAOwn" to Skills("languageaown", listOf(era), 0, "Common", null),
         "creditRating" to Skills("Credit Rating", listOf(era), 0, "Common", null),
         "sciences" to Skills("Sciences", listOf(era), 0, "Common", mutableMapOf("Agriculture" to 0)),
         "driveAuto" to Skills("Drive Auto", listOf(era), 0, "Common", null),

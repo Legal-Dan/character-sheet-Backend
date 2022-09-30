@@ -16,8 +16,8 @@ class AssignedSkills(
     private fun updateCharacteristicSkills(characterSkills: MutableMap<String, Skills>): MutableMap<String, Skills> {
         characterSkills["dodge"]!!.initialValue = characteristics["dexterity"]!!.value/2
         val assignLanguage = country.languages.random()
-        characterSkills["languageOwn"]!!.displayName = "Language: $assignLanguage"
-        characterSkills["languageOwn"]!!.initialValue = characteristics["education"]!!.value
+        characterSkills["languageAOwn"]!!.displayName = "Language: $assignLanguage"
+        characterSkills["languageAOwn"]!!.initialValue = characteristics["education"]!!.value
         for (language in languageList){
             if (language != assignLanguage){
                 characterSkills["languageOther"]!!.variety?.plusAssign(language to 1)
@@ -106,9 +106,10 @@ class AssignedSkills(
     }
 
     private fun skillConstructor(skillPair: List<String>): String {
-        val skill = skillPair[0]
+        var skill = skillPair[0]
         val variety = skillPair[1]
-        val newSkill = "$skill: $variety"
+        val newSkill = "${skill.trimEnd('r')}: $variety"
+        if (skill == "languageOthe: Serbo")skill = "languageOthe: Serbo-Croatian"
         val skillObject = characterSkills[skill] ?: throw error("skillConstructor says that $skill is not a skill!")
         val skillObjectVarietyList = skillObject.variety ?: throw error("skillConstructor says that $skill does not have a variety!")
         val skillObjectVariety = skillObjectVarietyList[variety] ?: throw error("skillConstructor says that $variety is not in the $skill list!")

@@ -160,10 +160,19 @@ class Characteristics(statsGeneration: String, highestValue: String, private val
                 amountRemaining -= randomAmount/5
                 updateCharacteristic(baseCharacteristic[randomStat]!!, baseCharacteristic[randomStat]!!.value - randomAmount)
             }
+            val toRemove = mutableListOf<String>()
             statsRemaining.forEach {
-                if (baseCharacteristic[it]!!.value <=5) statsRemaining -= it
+                if (baseCharacteristic[it]!!.value <=5) {
+                    toRemove += it
+                }
             }
-            if (statsRemaining.size == 0) {
+            statsRemaining -= toRemove.toSet()
+            if (statsRemaining.size >= 1) {
+                statsRemaining.forEach {
+                    if (baseCharacteristic[it]!!.value <=5) statsRemaining -= it
+                }
+            }
+            else {
                 break
             }
         }

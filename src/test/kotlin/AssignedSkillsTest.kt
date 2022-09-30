@@ -10,12 +10,12 @@ class AssignedSkillsTest{
 
     @Test
     fun `updates language display name to match country's language`() {
-        assert(TestFunctions().assignedSkills("classic").assignedCharacterSkills["languageOwn"]!!.displayName == "Language: MyLanguage")
+        assert(TestFunctions().assignedSkills("classic").assignedCharacterSkills["languageAOwn"]!!.displayName == "Language: MyLanguage")
     }
 
     @Test
     fun `updates language value to match education`() {
-        assert(TestFunctions().assignedSkills("classic").assignedCharacterSkills["languageOwn"]!!.initialValue >= 500)
+        assert(TestFunctions().assignedSkills("classic").assignedCharacterSkills["languageAOwn"]!!.initialValue >= 500)
     }
 
     @Test
