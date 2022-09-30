@@ -37,4 +37,14 @@ class Generators {
             occupationList[(1 until occupationList.size).random()]
         }
     }
+
+    fun dbGenerator(build: Int): String {
+        return when (build){
+            -2 -> "-2"
+            -1 -> "-1"
+            0 -> "None"
+            1 -> "+1D4"
+            else -> "+1D6"
+        }
+    }
 }

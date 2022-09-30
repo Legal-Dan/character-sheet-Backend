@@ -76,7 +76,8 @@ class MessageResource {
                     "${generatedCharacter.occupation}|" +
                     "${generatedCountry.region}|" +
                     "${sortStats(generatedCharacter)}|" +
-                    sortSkills(generatedCharacter)
+                    "${sortSkills(generatedCharacter)}|" +
+                    generatedCharacter.characteristics["build"]?.let { generators.dbGenerator(it.value) }
 
         class ReturnString(val text: String)
 

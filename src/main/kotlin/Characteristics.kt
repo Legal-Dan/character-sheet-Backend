@@ -2,7 +2,7 @@ class Characteristics(statsGeneration: String, highestValue: String, private val
     private val charValues = mutableListOf(70, 60, 60, 50, 50, 50, 40, 40)
     private val toAssign = mutableListOf("strength", "dexterity", "intelligence", "constitution", "appearance", "power", "size", "education")
     private val baseCharacteristic:MutableMap<String, Characteristic> = assignCharacteristics(statsGeneration, highestValue)
-    val updatedCharacteristic:MutableMap<String, Characteristic> = ageEffects(statsGeneration)
+    val updatedCharacteristic:MutableMap<String, Characteristic> = finaliseCharacteristics(statsGeneration)
 
     private fun assignCharacteristics(statsGeneration: String, highestValue: String): MutableMap<String, Characteristic> {
         return if (statsGeneration == "standard"){
@@ -91,6 +91,52 @@ class Characteristics(statsGeneration: String, highestValue: String, private val
         return baseCharacteristic
     }
 
+    private fun finaliseCharacteristics(statsGeneration: String): MutableMap<String, Characteristic> {
+        ageEffects(statsGeneration)
+        baseCharacteristic += "hp" to Characteristic("hp", assignHp())
+        baseCharacteristic += "build" to Characteristic("build", assignBuild())
+        baseCharacteristic += "move" to Characteristic("move", assignMove())
+        baseCharacteristic += "magic" to Characteristic("magic", assignMagic())
+        return baseCharacteristic
+    }
+
+    private fun assignMagic(): Int {
+        return baseCharacteristic["power"]!!.value/5
+    }
+
+    private fun assignMove(): Int {
+        return if (baseCharacteristic["strength"]!!.value < baseCharacteristic["size"]!!.value &&
+            baseCharacteristic["dexterity"]!!.value < baseCharacteristic["size"]!!.value) moveAgeModifier(7)
+        else if (baseCharacteristic["strength"]!!.value > baseCharacteristic["size"]!!.value &&
+            baseCharacteristic["dexterity"]!!.value > baseCharacteristic["size"]!!.value) moveAgeModifier(9)
+        else moveAgeModifier(8)
+    }
+
+    private fun moveAgeModifier(baseMove: Int): Int {
+        return when (age) {
+            in 40..49 -> baseMove - 1
+            in 50..59 -> baseMove - 2
+            in 60..69 -> baseMove - 3
+            in 70..79 -> baseMove - 4
+            in 80..89 -> baseMove - 5
+            else -> baseMove
+        }
+    }
+
+    private fun assignHp(): Int {
+        return (baseCharacteristic["constitution"]!!.value + baseCharacteristic["size"]!!.value)/10
+    }
+
+    private fun assignBuild(): Int {
+        return when(baseCharacteristic["strength"]!!.value + baseCharacteristic["size"]!!.value){
+            in 2..64 -> -2
+            in 65..84 -> -1
+            in 85..124 -> 0
+            in 125..164 -> 1
+            else -> 2
+        }
+    }
+    
     private fun ageEffects(statsGeneration: String):MutableMap<String, Characteristic>{
         if (statsGeneration != "standard"){
             when (age){
