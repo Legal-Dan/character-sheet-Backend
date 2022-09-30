@@ -2,7 +2,7 @@ class Characteristics(statsGeneration: String, highestValue: String, private val
     private val charValues = mutableListOf(70, 60, 60, 50, 50, 50, 40, 40)
     private val toAssign = mutableListOf("strength", "dexterity", "intelligence", "constitution", "appearance", "power", "size", "education")
     private val baseCharacteristic:MutableMap<String, Characteristic> = assignCharacteristics(statsGeneration, highestValue)
-    val updatedCharacteristic:MutableMap<String, Characteristic> = ageEffects()
+    val updatedCharacteristic:MutableMap<String, Characteristic> = ageEffects(statsGeneration)
 
     private fun assignCharacteristics(statsGeneration: String, highestValue: String): MutableMap<String, Characteristic> {
         return if (statsGeneration == "standard"){
@@ -91,39 +91,40 @@ class Characteristics(statsGeneration: String, highestValue: String, private val
         return baseCharacteristic
     }
 
-    private fun ageEffects():MutableMap<String, Characteristic>{
-
-        when (age){
-            in 15..19 -> {
-                lowerStats(1, "strength", "size")
-                lowerStats(1, "education")
-                extraLucky()
-            }
-            in 20..39 -> improveEdu(1)
-            in 40..49 -> {
-                improveEdu(2)
-                lowerStats(1, "strength", "constitution", "dexterity")
-                lowerStats(1, "appearance")
-            }
-            in 50..59 -> {
-                improveEdu(3)
-                lowerStats(2, "strength", "constitution", "dexterity")
-                lowerStats(2, "appearance")
-            }
-            in 60..69 -> {
-                improveEdu(4)
-                lowerStats(4, "strength", "constitution", "dexterity")
-                lowerStats(3, "appearance")
-            }
-            in 70..79 -> {
-                improveEdu(4)
-                lowerStats(8, "strength", "constitution", "dexterity")
-                lowerStats(4, "appearance")
-            }
-            in 80..89 -> {
-                improveEdu(4)
-                lowerStats(16, "strength", "constitution", "dexterity")
-                lowerStats(5, "appearance")
+    private fun ageEffects(statsGeneration: String):MutableMap<String, Characteristic>{
+        if (statsGeneration != "standard"){
+            when (age){
+                in 15..19 -> {
+                    lowerStats(1, "strength", "size")
+                    lowerStats(1, "education")
+                    extraLucky()
+                }
+                in 20..39 -> improveEdu(1)
+                in 40..49 -> {
+                    improveEdu(2)
+                    lowerStats(1, "strength", "constitution", "dexterity")
+                    lowerStats(1, "appearance")
+                }
+                in 50..59 -> {
+                    improveEdu(3)
+                    lowerStats(2, "strength", "constitution", "dexterity")
+                    lowerStats(2, "appearance")
+                }
+                in 60..69 -> {
+                    improveEdu(4)
+                    lowerStats(4, "strength", "constitution", "dexterity")
+                    lowerStats(3, "appearance")
+                }
+                in 70..79 -> {
+                    improveEdu(4)
+                    lowerStats(8, "strength", "constitution", "dexterity")
+                    lowerStats(4, "appearance")
+                }
+                in 80..89 -> {
+                    improveEdu(4)
+                    lowerStats(16, "strength", "constitution", "dexterity")
+                    lowerStats(5, "appearance")
+                }
             }
         }
         return baseCharacteristic
