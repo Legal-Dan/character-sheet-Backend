@@ -1,3 +1,9 @@
+package com.dan.legal
+
+import Country
+import Skills
+import importOccupations
+import importSkills
 
 class PlayableCharacter(
     val name: String,

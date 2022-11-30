@@ -1,5 +1,7 @@
-import main.countryList
-import main.occupationList
+package com.dan.legal
+
+import Country
+import importCountry
 
 class Generators {
 

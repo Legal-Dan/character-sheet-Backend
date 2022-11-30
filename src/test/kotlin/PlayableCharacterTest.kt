@@ -1,3 +1,5 @@
+import com.dan.legal.Country
+import com.dan.legal.PlayableCharacter
 import org.junit.jupiter.api.Test
 
 class PlayableCharacterTest{

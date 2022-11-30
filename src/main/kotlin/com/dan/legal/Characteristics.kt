@@ -1,3 +1,5 @@
+package com.dan.legal
+
 class Characteristics(statsGeneration: String, highestValue: String, private val age: Int) {
     private val charValues = mutableListOf(70, 60, 60, 50, 50, 50, 40, 40)
     private val toAssign = mutableListOf("strength", "dexterity", "intelligence", "constitution", "appearance", "power", "size", "education")
@@ -85,7 +87,7 @@ class Characteristics(statsGeneration: String, highestValue: String, private val
         return  Characteristic(name, value)
     }
 
-    private fun updateCharacteristic(characteristic:Characteristic, newValue:Int):MutableMap<String, Characteristic>{
+    private fun updateCharacteristic(characteristic: Characteristic, newValue:Int):MutableMap<String, Characteristic>{
         baseCharacteristic.remove(characteristic.name)
         baseCharacteristic += characteristic.name to createCharacteristic(characteristic.name, newValue)
         return baseCharacteristic

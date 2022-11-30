@@ -1,5 +1,8 @@
-import main.countryList
-import main.languageList
+package com.dan.legal
+
+import Country
+import Occupations
+import Skills
 import java.util.*
 
 class AssignedSkills(
@@ -14,7 +17,8 @@ class AssignedSkills(
     val assignedInterestSkills = assignInterests()
 
     private fun updateCharacteristicSkills(characterSkills: MutableMap<String, Skills>): MutableMap<String, Skills> {
-        characterSkills["dodge"]!!.initialValue = characteristics["dexterity"]!!.value/2
+        val dodge = characteristics["dexterity"]!!.value/2
+        characterSkills["dodge"]!!.initialValue = dodge
         val assignLanguage = country.languages.random()
         characterSkills["languageAOwn"]!!.displayName = "Language: $assignLanguage"
         characterSkills["languageAOwn"]!!.initialValue = characteristics["education"]!!.value
@@ -115,6 +119,7 @@ class AssignedSkills(
         val skillObjectVariety = skillObjectVarietyList[variety] ?: throw error("skillConstructor says that $variety is not in the $skill list!")
         val displayNameAltered = removeOther(skillObject.displayName)
         characterSkills += newSkill to Skills(
+            shortName = newSkill,
             displayName = "$displayNameAltered: $variety",
             era = skillObject.era,
             initialValue = skillObjectVariety,

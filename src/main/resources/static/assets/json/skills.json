@@ -1,0 +1,651 @@
+[
+  { "shortName": "accounting",
+    "displayName": "Accounting",
+    "era": ["gaslight","classic","modern"],
+    "initialValue": 5,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "accountingDarkAge",
+    "displayName": "Accounting",
+    "era": ["darkAge"],
+    "initialValue":10,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "animalHandling",
+    "displayName": "Animal Handling",
+    "era": ["classic,modern"],
+    "initialValue":5,
+    "rarity": "Uncommon",
+    "variety": null
+  },
+  {
+    "shortName": "animalHandlingDarkAge",
+    "displayName": "Animal Handling",
+    "era": ["darkAge"],
+    "initialValue":15,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "animalHandlingGaslight",
+    "displayName": "Animal Handling",
+    "era": ["gaslight"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "anthropology",
+    "displayName": "Anthropology",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "appraise",
+    "displayName": "Appraise",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "archaeology",
+    "displayName": "Archaeology",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "art",
+    "displayName": "Art and Craft",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": {"Acting": 5,"Carpentry": 5,"Dancing": 5,"Fine Art": 5,"Forgery": 5,"Writing": 5,"Singing": 5,"Photography": 5,"Pottery": 5,"Musician": 5,"Technical Drawing": 5}
+  },
+  {    "shortName": "artDarkAge",
+    "displayName": "Art and Craft",
+    "era": ["darkAge"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": {"Carpentry": 5,"Musician": 5,"Jeweler": 5,"Metal Working": 5,"Leather Working": 5,"Potions": 5,"Singing": 5,"Oratory": 5,"Pottery": 5}
+  },
+  {    "shortName": "artillery",
+    "displayName": "Artillery",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Uncommon",
+    "variety": null
+  },
+  {
+    "shortName": "charm",
+    "displayName": "Charm",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":15,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "climb",
+    "displayName": "Climb",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "computerUse",
+    "displayName": "Computer Use",
+    "era": ["modern"],
+    "initialValue":5,
+    "rarity": "Very Common",
+    "variety": null
+  },
+  {
+    "shortName": "creditRating",
+    "displayName": "Credit Rating",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":0,
+    "rarity": "Never",
+    "variety": null
+  },
+  {
+    "shortName": "cthulhuMythos",
+    "displayName": "Cthulhu Mythos",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":0,
+    "rarity": "Never",
+    "variety": null
+  },
+  {
+    "shortName": "demolitions",
+    "displayName": "Demolitions",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Uncommon",
+    "variety": null
+  },
+  {
+    "shortName": "disguise",
+    "displayName": "Disguise",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "diving",
+    "displayName": "Diving",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Uncommon",
+    "variety": null
+  },
+  {
+    "shortName": "dodge",
+    "displayName": "Dodge",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":0,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "driveAuto",
+    "displayName": "Drive Auto",
+    "era": ["classic,modern"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "driveCarriage",
+    "displayName": "Drive Carriage",
+    "era": ["gaslight"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "driveHorse",
+    "displayName": "Drive Horses/Oxen",
+    "era": ["darkAge"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "elecRepair",
+    "displayName": "Electrical Repair",
+    "era": ["classic,modern"],
+    "initialValue":10,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "elecRepairGaslight",
+    "displayName": "Electrical Repair",
+    "era": ["gaslight"],
+    "initialValue":1,
+    "rarity": "Uncommon",
+    "variety": null
+  },
+  {
+    "shortName": "electronics",
+    "displayName": "Electronics",
+    "era": ["modern"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "fastTalk",
+    "displayName": "Fast Talk",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "fightingBrawl",
+    "displayName": "Fighting: Brawl",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":25,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "fightingOther",
+    "displayName": "Fighting: Other",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":5,
+    "rarity": "Uncommon",
+    "variety":{"Axe": 15,"Garrote": 15,"Sword": 20,"Whip": 5}
+  },
+  {    "shortName": "fightingOtherDarkAge",
+    "displayName": "Fighting: Other",
+    "era": ["darkAge"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": {"Axe": 15,"Flail": 10,"Garrote": 15,"Lance": 15,"Mace": 25,"Shield": 15,"Spear": 15,"Staff": 15,"Sword": 20}
+  },
+  {    "shortName": "firearmsHandgun",
+    "displayName": "Firearms: Handgun",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "firearmsRifle",
+    "displayName": "Firearms: Rifle/Shotgun",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":25,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "firearmsOther",
+    "displayName": "Firearms: Other",
+    "era": ["classic,modern"],
+    "initialValue":10,
+    "rarity": "Uncommon",
+    "variety": {"Bow": 15,"Flamethrower": 10,"Machine Gun": 10}
+  },
+  {    "shortName": "firstAid",
+    "displayName": "First Aid",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":30,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "insight",
+    "displayName": "Insight",
+    "era": ["darkAge"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "history",
+    "displayName": "History",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "hypnosis",
+    "displayName": "Hypnosis",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Uncommon",
+    "variety": null
+  },
+  {
+    "shortName": "intimidate",
+    "displayName": "Intimidate",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":15,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "jump",
+    "displayName": "Jump",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "jumpDarkAge",
+    "displayName": "Jump",
+    "era": ["darkAge"],
+    "initialValue":25,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "languageAOwn",
+    "displayName": "Language: Own",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":0,
+    "rarity": "Never",
+    "variety": null
+  },
+  {
+    "shortName": "languageOther",
+    "displayName": "Language: Other",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": {"Latin": 1,"Sign Language": 1}
+  },
+  {    "shortName": "law",
+    "displayName": "Law",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "libraryUse",
+    "displayName": "Library Use",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":20,
+    "rarity": "Very Common",
+    "variety": null
+  },
+  {
+    "shortName": "libraryUseDarkAge",
+    "displayName": "Library Use",
+    "era": ["darkAge"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "listen",
+    "displayName": "Listen",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":20,
+    "rarity": "Very Common",
+    "variety": null
+  },
+  {
+    "shortName": "listenDarkAge",
+    "displayName": "Listen",
+    "era": ["darkAge"],
+    "initialValue":25,
+    "rarity": "Very Common",
+    "variety": null
+  },
+  {
+    "shortName": "locksmith",
+    "displayName": "Locksmith",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "mechRepair",
+    "displayName": "Mechanical Repair",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":10,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "medicine",
+    "displayName": "Medicine",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "naturalWorld",
+    "displayName": "Natural World",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":10,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "naturalWorldDarkAge",
+    "displayName": "Natural World",
+    "era": ["darkAge"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": {"Forest": 20,"Sea": 20,"Desert": 20}
+  },
+  {    "shortName": "navigate",
+    "displayName": "Navigate",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":10,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "occult",
+    "displayName": "Occult",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "operateHeavyMachinery",
+    "displayName": "Operate Heavy Machinery",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "otherKingdom",
+    "displayName": "Other Kingdom",
+    "era": ["darkAge"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "ownKingdom",
+    "displayName": "Own Kingdom",
+    "era": ["darkAge"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "persuade",
+    "displayName": "Persuade",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":10,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "persuadeDarkAge",
+    "displayName": "Persuade",
+    "era": ["darkAge"],
+    "initialValue":15,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "pilot",
+    "displayName": "Pilot",
+    "era": ["classic,modern"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": {"Aircraft": 1,"Boat": 1}
+  },
+  {    "shortName": "pilotGaslight",
+    "displayName": "Pilot",
+    "era": ["gaslight"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": {"Balloon": 1,"Boat": 1}
+  },
+  {    "shortName": "pilotBoatDarkAge",
+    "displayName": "Pilot Boat",
+    "era": ["darkAge"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "rangedWeapon",
+    "displayName": "Ranged Weapon: Bow",
+    "era": ["gaslight"],
+    "initialValue":15,
+    "rarity": "Uncommon",
+    "variety": null
+  },
+  {
+    "shortName": "rangedWeaponDarkAge",
+    "displayName": "Ranged Weapon",
+    "era": ["darkAge"],
+    "initialValue":10,
+    "rarity": "Common",
+    "variety": {"Bow": 10,"Crossbow": 10,"Sling": 20,"War Engine": 10}
+  },
+  {    "shortName": "readAndWrite",
+    "displayName": "Read and Write",
+    "era": ["darkAge"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": {"Arabic": 1,"Old English": 1,"Old French": 1,"Old German": 1,"Own": 1,"Hebrew": 1,"Latin": 1,"Old Norse": 1,"Occitan": 1,"Slavonic": 1,"Syriac": 1}
+  },
+  {    "shortName": "repairDevise",
+    "displayName": "Repair/Devise",
+    "era": ["darkAge"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "religion",
+    "displayName": "Religion",
+    "era": ["darkAge"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "psychoanalysis",
+    "displayName": "Psychoanalysis",
+    "era": ["classic,modern"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "psychology",
+    "displayName": "Psychology",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":10,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "readLips",
+    "displayName": "Read Lips",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Uncommon",
+    "variety": null
+  },
+  {
+    "shortName": "ride",
+    "displayName": "Ride",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":5,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "sciences",
+    "displayName": "Science",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": {"Agriculture": 1,"Astronomy": 1,"Biology": 1,"Chemistry": 1,"Geology": 1,"Mathematics": 1,"Pharmacology": 1,"Physics": 1}
+  },
+  {    "shortName": "sciencesDarkAge",
+    "displayName": "Science",
+    "era": ["darkAge"],
+    "initialValue":1,
+    "rarity": "Common",
+    "variety": {"Astronomy": 1,"Geometry": 1,"Mathematics": 1}
+  },
+  {    "shortName": "sleightOfHand",
+    "displayName": "Sleight of Hand",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":10,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "spotHidden",
+    "displayName": "Spot Hidden",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":25,
+    "rarity": "Very Common",
+    "variety": null
+  },
+  {
+    "shortName": "status",
+    "displayName": "Status",
+    "era": ["darkAge"],
+    "initialValue":0,
+    "rarity": "Never",
+    "variety": null
+  },
+  {
+    "shortName": "stealth",
+    "displayName": "Stealth",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "survival",
+    "displayName": "Survival",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":10,
+    "rarity": "Common",
+    "variety": {"Desert": 10,"Sea": 10,"Arctic": 10}
+  },
+  {    "shortName": "swim",
+    "displayName": "Swim",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "swimDarkAge",
+    "displayName": "Swim",
+    "era": ["darkAge"],
+    "initialValue":25,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "throwSkill",
+    "displayName": "Throw",
+    "era": ["gaslight","classic","modern"],
+    "initialValue":20,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "throwSkillDarkAge",
+    "displayName": "Throw",
+    "era": ["darkAge"],
+    "initialValue":25,
+    "rarity": "Common",
+    "variety": null
+  },
+  {
+    "shortName": "track",
+    "displayName": "Track",
+    "era": ["darkAge","gaslight","classic","modern"],
+    "initialValue":10,
+    "rarity": "Common",
+    "variety": null
+  }
+]

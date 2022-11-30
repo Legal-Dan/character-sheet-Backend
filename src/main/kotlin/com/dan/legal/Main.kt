@@ -1,8 +1,9 @@
-package main
+package com.dan.legal
 
-import Generators
-import PlayableCharacter
 import com.beust.klaxon.Klaxon
+import createCountriesList
+import createOccupationList
+import createSkillsList
 import generateCountryList
 import generateOccupationList
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.CrossOrigin
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestParam
 
 var countryList = listOf<String>()
 var languageList = listOf<String>()
@@ -21,10 +24,14 @@ class CharacterSheet
 
 fun main(args: Array<String>) {
     runApplication<CharacterSheet>(*args)
+    createOccupationList()
+    createSkillsList()
+    createCountriesList()
 }
 
 @RestController
 class MessageResource {
+//    @CrossOrigin(origins = ["https://legal-dan.github.io", "https://legal-dan.github.io"])
     @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
     @PostMapping("/getOccupations")
     fun get(@RequestBody title: String): List<String> {
@@ -33,16 +40,19 @@ class MessageResource {
         return occupationList
     }
 
+//    @CrossOrigin(origins = ["https://legal-dan.github.io", "https://legal-dan.github.io"])
     @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
     @PostMapping("/getRegions")
     fun getRegions(@RequestBody title: String): List<String> {
         val era = title.subSequence(10, title.length-2).toString()
         val data = generateCountryList(era)
-        countryList = data[0]
-        languageList = data[1]
+        countryList = data.first
+        languageList = data.second
         return listOf("Random") + countryList
     }
 
+
+//    @CrossOrigin(origins = ["https://legal-dan.github.io", "https://legal-dan.github.io"])
     @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
     @PostMapping("/getUsers")
     fun post(@RequestBody message: String): String {

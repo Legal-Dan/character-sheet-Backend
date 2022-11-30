@@ -1,0 +1,18 @@
+[
+  {
+    "displayName": "Adventurer",
+    "era": ["gaslight"],
+    "careerSkills": ["creditRating","sleightOfHand","fastTalk","languageOther","charm","psychology","art","multipleOfdisguise/firstAid/locksmith/ride:2"],
+    "creditRatingLow": 5,
+    "creditRatingHigh": 25,
+    "occupationPoints": ["education","education","appearance","appearance"]
+  },
+  {
+    "displayName": "Antiquarian",
+    "era": ["gaslight","classic","modern"],
+    "careerSkills": ["creditRating","appraise","art","history","libraryUse","languageOther","spotHidden","random","oneOfcharm/fastTalk/intimidate/persuade"],
+    "creditRatingLow": 30,
+    "creditRatingHigh": 70,
+    "occupationPoints": ["education","education","education","education"]
+  }
+]

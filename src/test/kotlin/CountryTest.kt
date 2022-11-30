@@ -1,3 +1,4 @@
+import com.dan.legal.Country
 import org.junit.jupiter.api.Test
 
 class CountryTest{

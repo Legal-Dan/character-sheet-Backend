@@ -16,17 +16,17 @@ class TestFunctions {
         "persuade" to Skills("Persuade", listOf(era), 0, "Common", null)
     )}
 
-    fun assignedSkills(era:String): AssignedSkills {
-        return AssignedSkills(
-            characterSkills(era),
-            importOccupations("Farmer", "classic"),
-            "classic",
-            mutableMapOf(
-                "dexterity" to Characteristic("dexterity", 100),
-                "education" to Characteristic("education", 500),
-                "intelligence" to Characteristic("intelligence", 75)
-            ),
-            Country("CountryName", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("MyLanguage"))
-        )
-    }
+//    fun assignedSkills(era:String): AssignedSkills {
+//        return AssignedSkills(
+//            characterSkills(era),
+//            importOccupations("Farmer", "classic"),
+//            "classic",
+//            mutableMapOf(
+//                "dexterity" to Characteristic("dexterity", 100),
+//                "education" to Characteristic("education", 500),
+//                "intelligence" to Characteristic("intelligence", 75)
+//            ),
+//            Country("CountryName", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("MyLanguage"))
+//        )
+//    }
 }
