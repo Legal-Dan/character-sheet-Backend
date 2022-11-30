@@ -5,8 +5,8 @@ class CountriesDataTest{
 
     @Test
     fun `can generate country list`() {
-        assert(generateCountryList("classic")[0].contains("England"))
-        assert(generateCountryList("classic")[1].contains("English"))
+        assert(generateCountryList("classic").first.contains("England"))
+        assert(generateCountryList("classic").second.contains("English"))
     }
 
     @Test

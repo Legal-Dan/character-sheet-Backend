@@ -31,8 +31,8 @@ fun main(args: Array<String>) {
 
 @RestController
 class MessageResource {
-//    @CrossOrigin(origins = ["https://legal-dan.github.io", "https://legal-dan.github.io"])
-    @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
+//    @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
+@CrossOrigin(origins = ["https://legal-dan.github.io", "https://legal-dan.github.io"])
     @PostMapping("/getOccupations")
     fun get(@RequestBody title: String): List<String> {
         val era = title.subSequence(10, title.length-2).toString()
@@ -40,8 +40,8 @@ class MessageResource {
         return occupationList
     }
 
-//    @CrossOrigin(origins = ["https://legal-dan.github.io", "https://legal-dan.github.io"])
-    @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
+//    @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
+@CrossOrigin(origins = ["https://legal-dan.github.io", "https://legal-dan.github.io"])
     @PostMapping("/getRegions")
     fun getRegions(@RequestBody title: String): List<String> {
         val era = title.subSequence(10, title.length-2).toString()
@@ -51,9 +51,8 @@ class MessageResource {
         return listOf("Random") + countryList
     }
 
-
-//    @CrossOrigin(origins = ["https://legal-dan.github.io", "https://legal-dan.github.io"])
-    @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
+//    @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
+@CrossOrigin(origins = ["https://legal-dan.github.io", "https://legal-dan.github.io"])
     @PostMapping("/getUsers")
     fun post(@RequestBody message: String): String {
         data class Character(

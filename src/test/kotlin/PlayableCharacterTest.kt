@@ -1,9 +1,8 @@
-import com.dan.legal.Country
 import com.dan.legal.PlayableCharacter
 import org.junit.jupiter.api.Test
 
 class PlayableCharacterTest{
-    private val testCountry = Country("CountryName", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"))
+    private val testCountry = Country("CountryName", listOf("MaleName"), listOf("FemaleName"), listOf("Surname"), listOf("Language"), listOf("Era"))
 
 
     @Test
