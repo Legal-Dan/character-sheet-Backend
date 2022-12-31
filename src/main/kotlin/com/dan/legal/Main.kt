@@ -1,5 +1,6 @@
 package com.dan.legal
 
+import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Klaxon
 import createCountriesList
 import createOccupationList
@@ -29,23 +30,26 @@ fun main(args: Array<String>) {
     createCountriesList()
 }
 
+class getEraRequest (
+    val title: String
+)
+
 @RestController
 class MessageResource {
 //    @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
 @CrossOrigin(origins = ["https://legal-dan.github.io", "https://legal-dan.github.io"])
     @PostMapping("/getOccupations")
-    fun get(@RequestBody title: String): List<String> {
-        val era = title.subSequence(10, title.length-2).toString()
+    fun get(@RequestBody request: getEraRequest): List<String> {
+        val era = request.title
         occupationList = generateOccupationList(era)
         return occupationList
     }
 
-//    @CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
+    //@CrossOrigin(origins = ["http://localhost:8080", "http://localhost:3000"])
 @CrossOrigin(origins = ["https://legal-dan.github.io", "https://legal-dan.github.io"])
     @PostMapping("/getRegions")
-    fun getRegions(@RequestBody title: String): List<String> {
-        val era = title.subSequence(10, title.length-2).toString()
-        val data = generateCountryList(era)
+    fun getRegions(@RequestBody request: getEraRequest): List<String> {
+        val data = generateCountryList(request.title)
         countryList = data.first
         languageList = data.second
         return listOf("Random") + countryList

@@ -1,7 +1,5 @@
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.transactions.transaction
 import java.net.URL
 
 var allOccupations = listOf<Occupations>()
@@ -16,7 +14,7 @@ val occupationPoints: List<String>
 )
 
 fun createOccupationList() {
-    val resource: URL = Occupations::class.java.classLoader.getResource("static/assets/json/occupations.json")
+    val resource: URL = Occupations::class.java.classLoader.getResource("static/assets/json/occupations.json") as URL
     allOccupations = jacksonObjectMapper().readValue(
         resource,
         object : TypeReference<List<Occupations>>() {}

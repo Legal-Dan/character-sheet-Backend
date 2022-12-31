@@ -5,7 +5,7 @@ import java.net.URL
 var allCountries = listOf<Country>()
 
 fun createCountriesList() {
-    val resource: URL = Country::class.java.classLoader.getResource("static/assets/json/countries.json")
+    val resource: URL = Country::class.java.classLoader.getResource("static/assets/json/countries.json") as URL
     allCountries = jacksonObjectMapper().readValue(
         resource,
         object : TypeReference<List<Country>>() {}
